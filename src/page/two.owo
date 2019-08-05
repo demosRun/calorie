@@ -3,6 +3,15 @@
   .box(:touchstart="boxTouchstart", :touchmove="boxTouchmove", :touchend="boxTouchend")
     img.two-1(src="@|two-1.png|")
     .content
+      img.content-item.content-2(src="@|two-2.png|")
+      img.content-item.content-3(src="@|two-3.png|")
+      img.content-item.content-4(src="@|two-4.png|")
+      img.content-item.content-5(src="@|two-5.png|")
+      img.content-item.content-6(src="@|two-6.png|")
+      img.content-item.content-7(src="@|two-7.png|")
+      img.content-item.content-8(src="@|two-8.png|")
+      img.content-item.content-9(src="@|two-9.png|")
+      img.content-item.content-10(src="@|two-10.png|")
 </template>
 
 <script>
@@ -15,20 +24,21 @@
       const twoBox = this.query('.box')[0]
       const content = $('.content')[0]
       const screen = owo.tool.getScreenInfo()
-      let scale = 1
+      let scaleX = 1
       if (screen.ratio > 1) {
-        twoBox.style.width = screen.clientWidth * 9 + 'px'
-        twoBox.style.height = screen.clientHeight + 'px'
-        scale = screen.clientWidth * 9 / 15985
+        content.style.width = screen.clientWidth * 9 + 'px'
+        content.style.height = screen.clientHeight + 'px'
+        scaleX = screen.clientWidth * 9 / 15985
       } else {
-        twoBox.style.width = screen.clientHeight * 9 + 'px'
-        twoBox.style.height = screen.clientWidth + 'px'
-        scale = screen.clientHeight * 9 / 15985
+        content.style.width = screen.clientHeight * 9 + 'px'
+        content.style.height = screen.clientWidth + 'px'
+        scaleX = screen.clientHeight * 9 / 15985
       }
-      content.style.width = twoBox.style.width
-      content.style.height = twoBox.style.height
+      // content.style.width = twoBox.style.width
+      // content.style.height = twoBox.style.height
       const people = $('.two-1')[0]
-      
+      const peopleWidth = people.width
+      console.log(peopleWidth)
       setTimeout(() => {
         console.log(isHorizontal)
         this.data.scroller = new Scroller(function (left, top, zoom) {
@@ -36,16 +46,16 @@
 
           // var X = -parseInt(myScroll.x / radio)
           // console.log(X)
-          var X = parseInt(scrollNumber / scale)
-          // console.log(X)
-          people.style.bottom = pathPeople[X + 60] * 100 + '%'
-          people.style.left = scrollNumber + 'px'
-          content.style.left = scrollNumber + 'px'
+          var X = parseInt((scrollNumber) / scaleX)
+          // 使小人脚正好在线上
+          people.style.bottom = pathPeople[X] * 100 + '%'
+          // people.style.left = scrollNumber + 'px'
+          content.style.transform = `translate(-${scrollNumber}px, 0)`
         }, {
           zooming: true,
           bouncing: false
         })
-        this.setShowPageNumber(2)
+        this.setShowPageNumber(10)
       }, 500)
     },
     setShowPageNumber: function (number) {
@@ -83,9 +93,8 @@
     height: 100%;
     background-image: url('@|two-bg.gif|');
     background-size: 100% 100%;
-    position: absolute;
     pointer-events: none;
-    z-index: -1;
+    z-index: 3;
   }
   .box img {
     pointer-events: none;
@@ -93,6 +102,39 @@
   .two-1 {
     height: 15%;
     position: absolute;
-    // left: 40px;
+    z-index: 2;
+    transform: translate(-50%, 0px);
+  }
+  .content-item {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+  }
+  .content-2 {
+    left: 100vw;
+  }
+  .content-3 {
+    left: 200vw;
+  }
+  .content-4 {
+    left: 300vw;
+  }
+  .content-5 {
+    left: 400vw;
+  }
+  .content-6 {
+    left: 500vw;
+  }
+  .content-7 {
+    left: 600vw;
+  }
+  .content-8 {
+    left: 700vw;
+  }
+  .content-9 {
+    left: 800vw;
+  }
+  .content-10 {
+    left: 900vw;
   }
 </style>

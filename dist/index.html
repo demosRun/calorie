@@ -197,9 +197,8 @@ li {
   height: 100%;
   background-image: url('./static/resource/two-bg.gif');
   background-size: 100% 100%;
-  position: absolute;
   pointer-events: none;
-  z-index: -1;
+  z-index: 3;
 }
 
 [template="two"] .box img {
@@ -209,6 +208,52 @@ li {
 [template="two"] .two-1 {
   height: 15%;
   position: absolute;
+  z-index: 2;
+  -webkit-transform: translate(-50%, 0px);
+       -o-transform: translate(-50%, 0px);
+          transform: translate(-50%, 0px);
+}
+
+[template="two"] .content-item {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+}
+
+[template="two"] .content-2 {
+  left: 100vw;
+}
+
+[template="two"] .content-3 {
+  left: 200vw;
+}
+
+[template="two"] .content-4 {
+  left: 300vw;
+}
+
+[template="two"] .content-5 {
+  left: 400vw;
+}
+
+[template="two"] .content-6 {
+  left: 500vw;
+}
+
+[template="two"] .content-7 {
+  left: 600vw;
+}
+
+[template="two"] .content-8 {
+  left: 700vw;
+}
+
+[template="two"] .content-9 {
+  left: 800vw;
+}
+
+[template="two"] .content-10 {
+  left: 900vw;
 }
 </style>
     <!-- 附属css文件 -->
@@ -219,7 +264,7 @@ li {
   <body>
     <!-- 页面区域 -->
     <div class="one ox" :click="start" template="one" style="display: none;"><img class="one-1" src="./static/resource/one-1.png"><img class="one-2" src="./static/resource/one-2.png"><img class="one-3" src="./static/resource/one-3.png"><img class="one-4" src="./static/resource/one-4.png"><img class="one-5" src="./static/resource/one-5.png"><img class="one-6" src="./static/resource/one-6.png"><img class="one-7" src="./static/resource/one-7.png"><img class="one-8" src="./static/resource/one-8.png"><img class="one-9" src="./static/resource/one-9.png"><img class="one-10" src="./static/resource/one-10.png"><img class="one-11" src="./static/resource/one-11.png"><img class="one-12" src="./static/resource/one-12.png"><img class="one-13" src="./static/resource/one-13.png"><img class="one-14" src="./static/resource/one-14.png"><img class="one-15" src="./static/resource/one-15.png"></div>
-    <div class="two ox" template="two" style="display: none;"><div class="box" :touchstart="boxTouchstart" :touchmove="boxTouchmove" :touchend="boxTouchend"><img class="two-1" src="./static/resource/two-1.png"><div class="content"></div></div></div>
+    <div class="two ox" template="two" style="display: none;"><div class="box" :touchstart="boxTouchstart" :touchmove="boxTouchmove" :touchend="boxTouchend"><img class="two-1" src="./static/resource/two-1.png"><div class="content"><img class="content-item content-2" src="./static/resource/two-2.png"><img class="content-item content-3" src="./static/resource/two-3.png"><img class="content-item content-4" src="./static/resource/two-4.png"><img class="content-item content-5" src="./static/resource/two-5.png"><img class="content-item content-6" src="./static/resource/two-6.png"><img class="content-item content-7" src="./static/resource/two-7.png"><img class="content-item content-8" src="./static/resource/two-8.png"><img class="content-item content-9" src="./static/resource/two-9.png"><img class="content-item content-10" src="./static/resource/two-10.png"></div></div></div>
     <!-- 框架script代码 --><script>"use strict";
 
 // 存储页面基本信息
@@ -274,38 +319,40 @@ owo.script = {
       var twoBox = this.query('.box')[0];
       var content = $('.content')[0];
       var screen = owo.tool.getScreenInfo();
-      var scale = 1;
+      var scaleX = 1;
 
       if (screen.ratio > 1) {
-        twoBox.style.width = screen.clientWidth * 9 + 'px';
-        twoBox.style.height = screen.clientHeight + 'px';
-        scale = screen.clientWidth * 9 / 15985;
+        content.style.width = screen.clientWidth * 9 + 'px';
+        content.style.height = screen.clientHeight + 'px';
+        scaleX = screen.clientWidth * 9 / 15985;
       } else {
-        twoBox.style.width = screen.clientHeight * 9 + 'px';
-        twoBox.style.height = screen.clientWidth + 'px';
-        scale = screen.clientHeight * 9 / 15985;
-      }
+        content.style.width = screen.clientHeight * 9 + 'px';
+        content.style.height = screen.clientWidth + 'px';
+        scaleX = screen.clientHeight * 9 / 15985;
+      } // content.style.width = twoBox.style.width
+      // content.style.height = twoBox.style.height
 
-      content.style.width = twoBox.style.width;
-      content.style.height = twoBox.style.height;
+
       var people = $('.two-1')[0];
+      var peopleWidth = people.width;
+      console.log(peopleWidth);
       setTimeout(function () {
         console.log(isHorizontal);
         _this.data.scroller = new Scroller(function (left, top, zoom) {
           var scrollNumber = isHorizontal ? top : left; // var X = -parseInt(myScroll.x / radio)
           // console.log(X)
 
-          var X = parseInt(scrollNumber / scale); // console.log(X)
+          var X = parseInt(scrollNumber / scaleX); // 使小人脚正好在线上
 
-          people.style.bottom = pathPeople[X + 60] * 100 + '%';
-          people.style.left = scrollNumber + 'px';
-          content.style.left = scrollNumber + 'px';
+          people.style.bottom = pathPeople[X] * 100 + '%'; // people.style.left = scrollNumber + 'px'
+
+          content.style.transform = "translate(-".concat(scrollNumber, "px, 0)");
         }, {
           zooming: true,
           bouncing: false
         });
 
-        _this.setShowPageNumber(2);
+        _this.setShowPageNumber(10);
       }, 500);
     },
     "setShowPageNumber": function setShowPageNumber(number) {
