@@ -1,0 +1,154 @@
+<template lang="pug">
+.one(:click="start")
+  img.one-1(src="@|one-1.png|")
+  img.one-2(src="@|one-2.png|")
+  //- 骑自行车的人
+  img.one-3(src="@|one-3.png|")
+  //- 楼房
+  img.one-4(src="@|one-4.png|")
+  img.one-5(src="@|one-5.png|")
+  img.one-6(src="@|one-6.png|")
+  img.one-7(src="@|one-7.png|")
+  img.one-8(src="@|one-8.png|")
+  //- 马路
+  img.one-9(src="@|one-9.png|")
+  //- 马路上的人
+  img.one-10(src="@|one-10.png|")
+  img.one-11(src="@|one-11.png|")
+  img.one-12(src="@|one-12.png|")
+  img.one-13(src="@|one-13.png|")
+  img.one-14(src="@|one-14.png|")
+  img.one-15(src="@|one-15.png|")
+  //- 滑动进入下一页
+  //- img.one-16(src="@|one-16.png|")
+</template>
+
+<script>
+  module.exports = {
+    data: {
+    },
+    created: function () {
+      // 两个垃圾桶?从下方出现
+      owo.tool.animate('fadeInUp', this.query('.one-1')[0])
+      owo.tool.animate('fadeInUp', this.query('.one-2')[0])
+      owo.tool.animate('fadeInLeft', this.query('.one-3')[0], 400)
+      // 楼从下方向上出现
+      owo.tool.animate('fadeInUp', this.query('.one-4')[0], 1000)
+      owo.tool.animate('fadeInUp', this.query('.one-5')[0], 1200)
+      owo.tool.animate('fadeInUp', this.query('.one-6')[0], 1400)
+      owo.tool.animate('fadeInUp', this.query('.one-7')[0], 1600)
+      owo.tool.animate('fadeInUp', this.query('.one-8')[0], 1800)
+      // 马路上的人逐渐出现
+      owo.tool.animate('fadeIn', this.query('.one-10')[0], 2000)
+      owo.tool.animate('fadeIn', this.query('.one-11')[0], 2000)
+      owo.tool.animate('fadeIn', this.query('.one-12')[0], 2000)
+      owo.tool.animate('bounceInDown', this.query('.one-13')[0], 2500)
+      owo.tool.animate('bounceInDown', this.query('.one-14')[0], 2500)
+      owo.tool.animate('bounceIn', this.query('.one-15')[0], 2800)
+      // 滑动提示
+    },
+    start: function () {
+      owo.go('two', 'scaleDown', 'moveFromBottom', 'scaleDown', 'moveFromTop')
+    }
+  }
+</script>
+
+<style lang="less">
+.one {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-size: 100% 100%;
+  background-image: url('@|one-bg.jpg|');
+}
+img {
+  position: absolute;
+}
+.one-1 {
+  height: 16%;
+  left: 0;
+  bottom: 0px;
+  z-index: 12;
+}
+.one-2 {
+  height: 16%;
+  right: 0;
+  bottom: 0px;
+  z-index: 12;
+}
+.one-3 {
+  height: 43%;
+  left: 17%;
+  bottom: 0px;
+  z-index: 11;;
+}
+.one-4 {
+  height: 48%;
+  left: 0;
+  bottom: 30%;
+  z-index: 9;
+}
+.one-5 {
+  height: 56%;
+  left: 3%;
+  bottom: 30%;
+  z-index: 8;
+}
+.one-7 {
+  right: 12%;
+  height: 45%;
+  bottom: 30%;
+}
+.one-8 {
+  right: 0;
+  height: 60%;
+  bottom: 30%;
+}
+.one-9 {
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  z-index: 10;
+}
+.one-6 {
+  height: 30%;
+  left: 11%;
+  bottom: 28%;
+  z-index: 7;
+}
+.one-10 {
+  height: 35%;
+  z-index: 10;
+  bottom: 26%;
+  left: 6%;
+}
+.one-11 {
+  z-index: 10;
+  height: 18%;
+  right: 33%;
+  bottom: 21%;
+}
+.one-12 {
+  right: 15%;
+  z-index: 10;
+  height: 33%;
+  bottom: 27%;
+}
+.one-13 {
+  left: 18%;
+  height: 12%;
+  bottom: 60%;
+}
+.one-14 {
+  right: 23%;
+  height: 12%;
+  top: 4%;
+}
+.one-15 {
+  height: 35%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 23%;
+}
+</style>

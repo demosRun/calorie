@@ -1,0 +1,98 @@
+<template lang="pug">
+.two
+  .box(:touchstart="boxTouchstart", :touchmove="boxTouchmove", :touchend="boxTouchend")
+    img.two-1(src="@|two-1.png|")
+    .content
+</template>
+
+<script>
+  module.exports = {
+    data: {
+      scroller: null,
+      scale: 1
+    },
+    created: function () {
+      const twoBox = this.query('.box')[0]
+      const content = $('.content')[0]
+      const screen = owo.tool.getScreenInfo()
+      let scale = 1
+      if (screen.ratio > 1) {
+        twoBox.style.width = screen.clientWidth * 9 + 'px'
+        twoBox.style.height = screen.clientHeight + 'px'
+        scale = screen.clientWidth * 9 / 15985
+      } else {
+        twoBox.style.width = screen.clientHeight * 9 + 'px'
+        twoBox.style.height = screen.clientWidth + 'px'
+        scale = screen.clientHeight * 9 / 15985
+      }
+      content.style.width = twoBox.style.width
+      content.style.height = twoBox.style.height
+      const people = $('.two-1')[0]
+      
+      setTimeout(() => {
+        console.log(isHorizontal)
+        this.data.scroller = new Scroller(function (left, top, zoom) {
+          var scrollNumber = isHorizontal ? top : left
+
+          // var X = -parseInt(myScroll.x / radio)
+          // console.log(X)
+          var X = parseInt(scrollNumber / scale)
+          // console.log(X)
+          people.style.bottom = pathPeople[X + 60] * 100 + '%'
+          people.style.left = scrollNumber + 'px'
+          content.style.left = scrollNumber + 'px'
+        }, {
+          zooming: true,
+          bouncing: false
+        })
+        this.setShowPageNumber(2)
+      }, 500)
+    },
+    setShowPageNumber: function (number) {
+      const screenInfo = owo.tool.getScreenInfo()
+      if (isHorizontal) {
+        this.data.scroller.setDimensions(screenInfo.clientHeight, screenInfo.clientWidth, screenInfo.clientHeight, screenInfo.clientWidth * number)
+      } else {
+        this.data.scroller.setDimensions(screenInfo.clientWidth, screenInfo.clientHeight, screenInfo.clientWidth * number, screenInfo.clientHeight)
+      }
+    },
+    boxTouchstart: function () {
+      // console.log('开始')
+      const e = this.$event
+      this.data.scroller.doTouchStart(e.touches, e.timeStamp)
+    },
+    boxTouchmove: function () {
+      const e = this.$event
+      this.data.scroller.doTouchMove(e.touches, e.timeStamp)
+    },
+    boxTouchend: function () {
+      // console.log('结束')
+      const e = this.$event
+      this.data.scroller.doTouchEnd(e.timeStamp)
+    }
+  }
+</script>
+
+<style lang="less">
+  .two {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .content {
+    height: 100%;
+    background-image: url('@|two-bg.gif|');
+    background-size: 100% 100%;
+    position: absolute;
+    pointer-events: none;
+    z-index: -1;
+  }
+  .box img {
+    pointer-events: none;
+  }
+  .two-1 {
+    height: 15%;
+    position: absolute;
+    // left: 40px;
+  }
+</style>

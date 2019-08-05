@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>页面</title>
+    <!-- 页面的元信息 -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1"/>
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="white"/>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="keywords" content="{TAG_59446_TAG}"/>
+    <meta name="description" content="{TAG_59447_TAG}"/>
+    <meta name="catalogs" content="{TAG_83943_TAG}"/>
+    <meta name="filetype" content="1"/>
+    <meta name="publishedtype" content="1"/>
+    <meta name="pagetype" content="2"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="x5-orientation" content="portrait"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="browsermode" content="application"/>
+    <meta name="x5-page-mode" content="app"/>
+    <!-- 页面主样式文件 -->
+<style>
+body, html, .ox {
+  padding: 0;
+  margin: 0;
+}
+
+.owo-animation {
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.owo-animated {
+  -webkit-animation-duration: 1s;
+  -o-animation-duration: 1s;
+     animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+     animation-fill-mode: both;
+}
+.owo-animation-forward {
+  z-index: 99;
+}
+
+a:link, a:visited {
+  text-decoration: none;
+}
+
+/* 清除浮动 */
+.clear:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  visibility: hidden;
+  clear: both;
+  zoom: 1;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.one[template="one"] {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-size: 100% 100%;
+  background-image: url('./static/resource/one-bg.jpg');
+}
+
+[template="one"] img {
+  position: absolute;
+}
+
+[template="one"] .one-1 {
+  height: 16%;
+  left: 0;
+  bottom: 0px;
+  z-index: 12;
+}
+
+[template="one"] .one-2 {
+  height: 16%;
+  right: 0;
+  bottom: 0px;
+  z-index: 12;
+}
+
+[template="one"] .one-3 {
+  height: 43%;
+  left: 17%;
+  bottom: 0px;
+  z-index: 11;
+}
+
+[template="one"] .one-4 {
+  height: 48%;
+  left: 0;
+  bottom: 30%;
+  z-index: 9;
+}
+
+[template="one"] .one-5 {
+  height: 56%;
+  left: 3%;
+  bottom: 30%;
+  z-index: 8;
+}
+
+[template="one"] .one-7 {
+  right: 12%;
+  height: 45%;
+  bottom: 30%;
+}
+
+[template="one"] .one-8 {
+  right: 0;
+  height: 60%;
+  bottom: 30%;
+}
+
+[template="one"] .one-9 {
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  z-index: 10;
+}
+
+[template="one"] .one-6 {
+  height: 30%;
+  left: 11%;
+  bottom: 28%;
+  z-index: 7;
+}
+
+[template="one"] .one-10 {
+  height: 35%;
+  z-index: 10;
+  bottom: 26%;
+  left: 6%;
+}
+
+[template="one"] .one-11 {
+  z-index: 10;
+  height: 18%;
+  right: 33%;
+  bottom: 21%;
+}
+
+[template="one"] .one-12 {
+  right: 15%;
+  z-index: 10;
+  height: 33%;
+  bottom: 27%;
+}
+
+[template="one"] .one-13 {
+  left: 18%;
+  height: 12%;
+  bottom: 60%;
+}
+
+[template="one"] .one-14 {
+  right: 23%;
+  height: 12%;
+  top: 4%;
+}
+
+[template="one"] .one-15 {
+  height: 35%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 23%;
+}
+.two[template="two"] {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+[template="two"] .content {
+  height: 100%;
+  background-image: url('./static/resource/two-bg.gif');
+  background-size: 100% 100%;
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+}
+
+[template="two"] .box img {
+  pointer-events: none;
+}
+
+[template="two"] .two-1 {
+  height: 15%;
+  position: absolute;
+}
+</style>
+    <!-- 附属css文件 -->
+    <link rel="stylesheet" href="./static/css/main.css" charset="utf-8">
+    <link rel="stylesheet" href="./static/css/owo.animation.css">
+    <link rel="stylesheet" href="./static/css/owo.animate.css">
+  </head>
+  <body>
+    <!-- 页面区域 -->
+    <div class="one ox" :click="start" template="one" style="display: none;"><img class="one-1" src="./static/resource/one-1.png"><img class="one-2" src="./static/resource/one-2.png"><img class="one-3" src="./static/resource/one-3.png"><img class="one-4" src="./static/resource/one-4.png"><img class="one-5" src="./static/resource/one-5.png"><img class="one-6" src="./static/resource/one-6.png"><img class="one-7" src="./static/resource/one-7.png"><img class="one-8" src="./static/resource/one-8.png"><img class="one-9" src="./static/resource/one-9.png"><img class="one-10" src="./static/resource/one-10.png"><img class="one-11" src="./static/resource/one-11.png"><img class="one-12" src="./static/resource/one-12.png"><img class="one-13" src="./static/resource/one-13.png"><img class="one-14" src="./static/resource/one-14.png"><img class="one-15" src="./static/resource/one-15.png"></div>
+    <div class="two ox" template="two" style="display: none;"><div class="box" :touchstart="boxTouchstart" :touchmove="boxTouchmove" :touchend="boxTouchend"><img class="two-1" src="./static/resource/two-1.png"><div class="content"></div></div></div>
+    <!-- 框架script代码 --><script>"use strict";
+
+// 存储页面基本信息
+var owo = {
+  // 页面默认入口 如果没有设置 则取第一个页面为默认页面
+  entry: "one",
+  // 全局方法变量
+  tool: {},
+  // 框架状态变量
+  state: {}
+};
+/*
+  存储每个页面的函数
+  键名：页面名称
+  键值：方法列表
+*/
+
+owo.script = {
+  "one": {
+    "data": {},
+    "created": function created() {
+      // 两个垃圾桶?从下方出现
+      owo.tool.animate('fadeInUp', this.query('.one-1')[0]);
+      owo.tool.animate('fadeInUp', this.query('.one-2')[0]);
+      owo.tool.animate('fadeInLeft', this.query('.one-3')[0], 400); // 楼从下方向上出现
+
+      owo.tool.animate('fadeInUp', this.query('.one-4')[0], 1000);
+      owo.tool.animate('fadeInUp', this.query('.one-5')[0], 1200);
+      owo.tool.animate('fadeInUp', this.query('.one-6')[0], 1400);
+      owo.tool.animate('fadeInUp', this.query('.one-7')[0], 1600);
+      owo.tool.animate('fadeInUp', this.query('.one-8')[0], 1800); // 马路上的人逐渐出现
+
+      owo.tool.animate('fadeIn', this.query('.one-10')[0], 2000);
+      owo.tool.animate('fadeIn', this.query('.one-11')[0], 2000);
+      owo.tool.animate('fadeIn', this.query('.one-12')[0], 2000);
+      owo.tool.animate('bounceInDown', this.query('.one-13')[0], 2500);
+      owo.tool.animate('bounceInDown', this.query('.one-14')[0], 2500);
+      owo.tool.animate('bounceIn', this.query('.one-15')[0], 2800); // 滑动提示
+    },
+    "start": function start() {
+      owo.go('two', 'scaleDown', 'moveFromBottom', 'scaleDown', 'moveFromTop');
+    }
+  },
+  "two": {
+    "data": {
+      "scroller": null,
+      "scale": 1
+    },
+    "created": function created() {
+      var _this = this;
+
+      var twoBox = this.query('.box')[0];
+      var content = $('.content')[0];
+      var screen = owo.tool.getScreenInfo();
+      var scale = 1;
+
+      if (screen.ratio > 1) {
+        twoBox.style.width = screen.clientWidth * 9 + 'px';
+        twoBox.style.height = screen.clientHeight + 'px';
+        scale = screen.clientWidth * 9 / 15985;
+      } else {
+        twoBox.style.width = screen.clientHeight * 9 + 'px';
+        twoBox.style.height = screen.clientWidth + 'px';
+        scale = screen.clientHeight * 9 / 15985;
+      }
+
+      content.style.width = twoBox.style.width;
+      content.style.height = twoBox.style.height;
+      var people = $('.two-1')[0];
+      setTimeout(function () {
+        console.log(isHorizontal);
+        _this.data.scroller = new Scroller(function (left, top, zoom) {
+          var scrollNumber = isHorizontal ? top : left; // var X = -parseInt(myScroll.x / radio)
+          // console.log(X)
+
+          var X = parseInt(scrollNumber / scale); // console.log(X)
+
+          people.style.bottom = pathPeople[X + 60] * 100 + '%';
+          people.style.left = scrollNumber + 'px';
+          content.style.left = scrollNumber + 'px';
+        }, {
+          zooming: true,
+          bouncing: false
+        });
+
+        _this.setShowPageNumber(2);
+      }, 500);
+    },
+    "setShowPageNumber": function setShowPageNumber(number) {
+      var screenInfo = owo.tool.getScreenInfo();
+
+      if (isHorizontal) {
+        this.data.scroller.setDimensions(screenInfo.clientHeight, screenInfo.clientWidth, screenInfo.clientHeight, screenInfo.clientWidth * number);
+      } else {
+        this.data.scroller.setDimensions(screenInfo.clientWidth, screenInfo.clientHeight, screenInfo.clientWidth * number, screenInfo.clientHeight);
+      }
+    },
+    "boxTouchstart": function boxTouchstart() {
+      // console.log('开始')
+      var e = this.$event;
+      this.data.scroller.doTouchStart(e.touches, e.timeStamp);
+    },
+    "boxTouchmove": function boxTouchmove() {
+      var e = this.$event;
+      this.data.scroller.doTouchMove(e.touches, e.timeStamp);
+    },
+    "boxTouchend": function boxTouchend() {
+      // console.log('结束')
+      var e = this.$event;
+      this.data.scroller.doTouchEnd(e.timeStamp);
+    }
+  }
+};</script>
+<!-- 框架script文件 -->
+<script src="./static/js/owo.main.js" type="text/javascript" charset="UTF-8"></script>
+<!-- 调试-热刷新代码 -->
+<script src="./static/js/autoReload.js" type="text/javascript" charset="UTF-8"></script>
+<!-- 调试-远程调试 -->
+<script src="./static/js/log.js" type="text/javascript" charset="UTF-8"></script>
+
+    <script src="http://tools.people.com.cn/libs/jquery/3.0.0/jquery-3.0.0.min.js" type="text/javascript"  charset="UTF-8"></script>
+    <script src="http://www.people.com.cn/img/MAIN/2019/02/119071/script/lodash.core.js" type="text/javascript"  charset="UTF-8"></script>
+    <script src="http://www.people.com.cn/img/MAIN/2019/02/119071/script/Scroller.js" type="text/javascript"  charset="UTF-8"></script>
+    <script src="./static/js/main.js" type="text/javascript"  charset="UTF-8"></script>
+  </body>
+</html>
