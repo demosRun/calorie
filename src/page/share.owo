@@ -12,6 +12,7 @@
     data: {
     },
     created: function () {
+      this.query('.text')[0].innerText = '@' + owo.state.ID
       document.body.classList.remove('horizontal')
       document.body.style.width = '100%'
       document.body.style.height = '100%'
