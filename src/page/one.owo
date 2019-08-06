@@ -49,6 +49,9 @@
     },
     start: function () {
       owo.go('two', 'scaleDown', 'moveFromBottom', 'scaleDown', 'moveFromTop')
+      // 播放音乐
+      var audio= new Audio("@|bg.mp3|")
+      audio.play();
     }
   }
 </script>

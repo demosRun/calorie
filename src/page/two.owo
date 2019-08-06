@@ -3,15 +3,87 @@
   .box(:touchstart="boxTouchstart", :touchmove="boxTouchmove", :touchend="boxTouchend")
     img.two-1(src="@|two-1.png|")
     .content
-      img.content-item.content-2(src="@|two-2.png|")
-      img.content-item.content-3(src="@|two-3.png|")
-      img.content-item.content-4(src="@|two-4.png|")
-      img.content-item.content-5(src="@|two-5.png|")
-      img.content-item.content-6(src="@|two-6.png|")
-      img.content-item.content-7(src="@|two-7.png|")
-      img.content-item.content-8(src="@|two-8.png|")
-      img.content-item.content-9(src="@|two-9.png|")
-      img.content-item.content-10(src="@|two-10.png|")
+      .content-item.content-2
+        .left
+          .kacl +100kacl
+          img.scene(src="@|two-2.png|")
+          img.nocolor-button-item.button-1(:click="activeScene", src="@|two-button-1.png|")
+        .right
+          .kacl +100kacl
+          img.scene(src="@|two-2.png|")
+          img.nocolor-button-item.button-2(:click="activeScene", src="@|two-button-2.png|")
+      .content-item.content-3
+        .left
+          .kacl +100kacl
+          img.scene(src="@|two-3.png|")
+          img.nocolor-button-item.button-3(:click="activeScene", src="@|two-button-3.png|")
+        .right
+          .kacl +100kacl
+          img.scene(src="@|two-3.png|")
+          img.nocolor-button-item.button-4(:click="activeScene", src="@|two-button-4.png|")
+      .content-item.content-4
+        .left
+          .kacl +100kacl
+          img.scene(src="@|two-4.png|")
+          img.nocolor-button-item.button-5(:click="activeScene", src="@|two-button-5.png|")
+        .right
+          .kacl +100kacl
+          img.scene(src="@|two-4.png|")
+          img.nocolor-button-item.button-6(:click="activeScene", src="@|two-button-6.png|")
+      .content-item.content-5
+        .left
+          .kacl +100kacl
+          img.scene(src="@|two-5.png|")
+          img.nocolor-button-item.button-7(:click="activeScene", src="@|two-button-7.png|")
+        .right
+          .kacl +100kacl
+          img.scene(src="@|two-5.png|")
+          img.nocolor-button-item.button-8(:click="activeScene", src="@|two-button-8.png|")
+      .content-item.content-6
+        .left
+          .kacl +100kacl
+          img.scene(src="@|two-6.png|")
+          img.nocolor-button-item.button-9(:click="activeScene", src="@|two-button-9.png|")
+        .right
+          .kacl +100kacl
+          img.scene(src="@|two-6.png|")
+          img.nocolor-button-item.button-10(:click="activeScene", src="@|two-button-10.png|")
+      .content-item.content-7
+        .left
+          .kacl +100kacl
+          img.scene(src="@|two-7.png|")
+          img.nocolor-button-item.button-11(:click="activeScene", src="@|two-button-11.png|")
+        .right
+          .kacl +100kacl
+          img.scene(src="@|two-7.png|")
+          img.nocolor-button-item.button-12(:click="activeScene", src="@|two-button-12.png|")
+      .content-item.content-8
+        .left
+          .kacl +100kacl
+          img.scene(src="@|two-8.png|")
+          img.nocolor-button-item.button-13(:click="activeScene", src="@|two-button-13.png|")
+        .right
+          .kacl +100kacl
+          img.scene(src="@|two-8.png|")
+          img.nocolor-button-item.button-14(:click="activeScene", src="@|two-button-14.png|")
+      .content-item.content-9
+        .left
+          .kacl +100kacl
+          img.scene(src="@|two-9.png|")
+          img.nocolor-button-item.button-15(:click="activeScene", src="@|two-button-15.png|")
+        .right
+          .kacl +100kacl
+          img.scene(src="@|two-9.png|")
+          img.nocolor-button-item.button-16(:click="activeScene", src="@|two-button-16.png|")
+      .content-item.content-10
+        .left
+          .kacl +100kacl
+          img.scene(src="@|two-10.png|")
+          img.nocolor-button-item.button-17(:click="activeScene", src="@|two-button-17.png|")
+        .right
+          .kacl +100kacl
+          img.scene(src="@|two-10.png|")
+          img.nocolor-button-item.button-18(:click="activeScene", src="@|two-button-18.png|")
 </template>
 
 <script>
@@ -28,25 +100,35 @@
       if (screen.ratio > 1) {
         content.style.width = screen.clientWidth * 9 + 'px'
         content.style.height = screen.clientHeight + 'px'
-        scaleX = screen.clientWidth * 9 / 15985
+        scaleX = screen.clientWidth * 10 / 15985
+        this.query('.content-item').forEach(element => {
+          element.style.width = screen.clientWidth + 'px'
+        })
       } else {
         content.style.width = screen.clientHeight * 9 + 'px'
         content.style.height = screen.clientWidth + 'px'
-        scaleX = screen.clientHeight * 9 / 15985
+        scaleX = screen.clientHeight * 10 / 15985
+        this.query('.content-item').forEach(element => {
+          element.style.width = screen.clientHeight + 'px'
+        })
       }
+      // alert(screen.clientHeight)
+      // console.log(scaleX * 15985)
       // content.style.width = twoBox.style.width
       // content.style.height = twoBox.style.height
       const people = $('.two-1')[0]
       const peopleWidth = people.width
-      console.log(peopleWidth)
+
+      
+      // console.log(peopleWidth)
       setTimeout(() => {
-        console.log(isHorizontal)
+        // console.log(isHorizontal)
         this.data.scroller = new Scroller(function (left, top, zoom) {
           var scrollNumber = isHorizontal ? top : left
 
           // var X = -parseInt(myScroll.x / radio)
           // console.log(X)
-          var X = parseInt((scrollNumber) / scaleX)
+          var X = parseInt((scrollNumber + 40) / scaleX)
           // 使小人脚正好在线上
           people.style.bottom = pathPeople[X] * 100 + '%'
           // people.style.left = scrollNumber + 'px'
@@ -55,14 +137,16 @@
           zooming: true,
           bouncing: false
         })
-        this.setShowPageNumber(10)
+        // 默认只能翻2屏幕
+        this.setShowPageNumber(2)
       }, 500)
     },
     setShowPageNumber: function (number) {
-      const screenInfo = owo.tool.getScreenInfo()
+      let screenInfo = owo.tool.getScreenInfo()
       if (isHorizontal) {
-        this.data.scroller.setDimensions(screenInfo.clientHeight, screenInfo.clientWidth, screenInfo.clientHeight, screenInfo.clientWidth * number)
+        this.data.scroller.setDimensions(screenInfo.clientWidth, screenInfo.clientHeight, screenInfo.clientWidth, screenInfo.clientHeight * number)
       } else {
+        
         this.data.scroller.setDimensions(screenInfo.clientWidth, screenInfo.clientHeight, screenInfo.clientWidth * number, screenInfo.clientHeight)
       }
     },
@@ -79,6 +163,24 @@
       // console.log('结束')
       const e = this.$event
       this.data.scroller.doTouchEnd(e.timeStamp)
+    },
+    activeScene: function () {
+      // 获取到父级元素
+      const parent = this.$event.target.parentElement
+      // 按钮停止闪烁
+      this.$event.target.classList.remove('twinkle')
+      // 标记父元素为已激活状态
+      parent.parentElement.classList.add('active')
+      // 替换图片
+      parent.getElementsByClassName('scene')[0].src = parent.getElementsByClassName('scene')[0].src.replace('two-', 'two-color')
+      // 展示卡路里
+      parent.getElementsByClassName('kacl')[0].style.display = 'block'
+      // 判断点亮了多少个
+      const activeLenght = this.query('.content')[0].getElementsByClassName('active').length
+      // 允许进行下一步
+      if (activeLenght < 18) {
+        this.setShowPageNumber(activeLenght + 2)
+      }
     }
   }
 </script>
@@ -93,48 +195,88 @@
     height: 100%;
     background-image: url('@|two-bg.gif|');
     background-size: 100% 100%;
-    pointer-events: none;
     z-index: 3;
+    display: flex;
+    padding-left: 100%;
+  }
+  .box {
+    position: relative;
+    width: 100%;
+    height: 100%;
   }
   .box img {
-    pointer-events: none;
+    display: block;
   }
   .two-1 {
     height: 15%;
     position: absolute;
     z-index: 2;
+    left: 40px;
     transform: translate(-50%, 0px);
   }
-  .content-item {
-    width: 100vw;
-    height: 100vh;
+  .kacl {
     position: absolute;
+    color: #f76363;
+    font-weight: bold;
+    font-size: 20px;
+    left: 5%;
+    top: 8%;
+    display: none;
+    animation: showkacl 1000ms 1;
   }
-  .content-2 {
-    left: 100vw;
+  .content-item {
+    height: 100%;
+    display: flex;
+    .left, .right {
+      height: 100%;
+      width: 50%;
+      overflow: hidden;
+      position: relative;
+    }
+    .right .scene {
+      position: absolute;
+      right: 0;
+    }
+    .scene {
+      height: 100%;
+    }
+    .nocolor-button-item {
+      height: 38%;
+      position: absolute;
+      bottom: 1%;
+      left: 0;
+      right: 0;
+      margin: auto;
+      cursor: pointer;
+      pointer-events: unset;
+      animation: fade 2000ms infinite;
+    }
   }
-  .content-3 {
-    left: 200vw;
+  .active .nocolor-button-item {
+    pointer-events: none;
+    animation: unset;
   }
-  .content-4 {
-    left: 300vw;
+  @keyframes fade {
+    from {
+      opacity: 1.0;
+    }
+    50% {
+      opacity: 0.6;
+    }
+    to {
+      opacity: 1.0;
+    }
   }
-  .content-5 {
-    left: 400vw;
-  }
-  .content-6 {
-    left: 500vw;
-  }
-  .content-7 {
-    left: 600vw;
-  }
-  .content-8 {
-    left: 700vw;
-  }
-  .content-9 {
-    left: 800vw;
-  }
-  .content-10 {
-    left: 900vw;
+  @keyframes showkacl {
+    from {
+      opacity: 0;
+      top: 12%;
+      font-size: 12px;
+    }
+    to {
+      opacity: 1;
+      top: 8%;
+      font-size: 20px;
+    }
   }
 </style>
