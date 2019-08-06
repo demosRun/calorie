@@ -194,8 +194,7 @@
       // 判断点亮了多少个
       const activeLenght = this.query('.content')[0].getElementsByClassName('active').length
       // console.log(activeLenght)
-      var audio= new Audio("@|click.mp3|")
-        audio.play()
+      new Audio("@|click.mp3|").play()
       // 允许进行下一步
       if (activeLenght < 9) {
         this.setShowPageNumber(activeLenght + 2)
