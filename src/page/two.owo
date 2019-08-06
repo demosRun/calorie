@@ -103,6 +103,7 @@
         scaleX = screen.clientWidth * 10 / 15985
         this.query('.content-item').forEach(element => {
           element.style.width = screen.clientWidth + 'px'
+          element.style.height = screen.clientHeight / 1.6 + 'px'
         })
       } else {
         content.style.width = screen.clientHeight * 9 + 'px'
@@ -110,6 +111,8 @@
         scaleX = screen.clientHeight * 10 / 15985
         this.query('.content-item').forEach(element => {
           element.style.width = screen.clientHeight + 'px'
+          console.log(screen.clientHeight, 1.6)
+          element.style.height = screen.clientHeight / 1.6 + 'px'
         })
       }
       // alert(screen.clientHeight)
@@ -146,7 +149,6 @@
       if (isHorizontal) {
         this.data.scroller.setDimensions(screenInfo.clientWidth, screenInfo.clientHeight, screenInfo.clientWidth, screenInfo.clientHeight * number)
       } else {
-        
         this.data.scroller.setDimensions(screenInfo.clientWidth, screenInfo.clientHeight, screenInfo.clientWidth * number, screenInfo.clientHeight)
       }
     },

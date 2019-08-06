@@ -440,6 +440,7 @@ owo.script = {
         scaleX = screen.clientWidth * 10 / 15985;
         this.query('.content-item').forEach(function (element) {
           element.style.width = screen.clientWidth + 'px';
+          element.style.height = screen.clientHeight / 1.6 + 'px';
         });
       } else {
         content.style.width = screen.clientHeight * 9 + 'px';
@@ -447,6 +448,8 @@ owo.script = {
         scaleX = screen.clientHeight * 10 / 15985;
         this.query('.content-item').forEach(function (element) {
           element.style.width = screen.clientHeight + 'px';
+          console.log(screen.clientHeight, 1.6);
+          element.style.height = screen.clientHeight / 1.6 + 'px';
         });
       } // alert(screen.clientHeight)
       // console.log(scaleX * 15985)
