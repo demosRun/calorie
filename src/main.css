@@ -8,6 +8,7 @@ body, html {
 }
 body {
   position: absolute;
+  background-color: #f2ebe2;
 }
 h1, h2, h3, h4, h5, input {
   margin: 0;
@@ -40,4 +41,22 @@ h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, bu
 .horizontal {
   -webkit-transform: translate3d(0, 0, 0) rotate(90deg);
           transform: translate3d(0, 0, 0) rotate(90deg);
+}
+
+.huxian {
+  animation: huxian 500ms 1;
+}
+@keyframes huxian {
+  0% {
+    left: 63%;
+    top: 19%;
+  }
+  80% {
+    left: 48%;
+    top: 29%;
+  }
+  100% {
+    left: 42%;
+    top: 40%;
+  }
 }

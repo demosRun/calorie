@@ -20,7 +20,8 @@
   img.one-14(src="@|one-14.png|")
   img.one-15(src="@|one-15.png|")
   //- 滑动进入下一页
-  //- img.one-16(src="@|one-16.png|")
+  img.one-16(src="@|one-16.png|")
+  img.one-17(src="@|one-17.png|")
 </template>
 
 <script>
@@ -45,13 +46,18 @@
       owo.tool.animate('bounceInDown', this.query('.one-13')[0], 2500)
       owo.tool.animate('bounceInDown', this.query('.one-14')[0], 2500)
       owo.tool.animate('bounceIn', this.query('.one-15')[0], 2800)
+      owo.tool.animate('bounceIn', this.query('.one-16')[0], 2800)
+      owo.tool.animate('bounceIn', this.query('.one-17')[0], 2800)
       // 滑动提示
     },
     start: function () {
-      owo.go('two', 'scaleDown', 'moveFromBottom', 'scaleDown', 'moveFromTop')
-      // 播放音乐
-      var audio= new Audio("@|bg.mp3|")
-      audio.play();
+      this.query('.one-17')[0].classList.add('huxian')
+      setTimeout(() => {
+        owo.go('two', 'scaleDown', 'moveFromBottom', 'scaleDown', 'moveFromTop')
+        // 播放音乐
+        var audio= new Audio("@|bg.mp3|")
+        audio.play()
+      }, 500)
     }
   }
 </script>
@@ -153,5 +159,19 @@ img {
   right: 0;
   margin: auto;
   top: 23%;
+}
+.one-16 {
+  height: 26%;
+  position: absolute;
+  left: 40%;
+  top: 25%;
+  z-index: 0;
+}
+.one-17 {
+  z-index: 0;
+  height: 10%;
+  position: absolute;
+  left: 63%;
+  top: 19%;
 }
 </style>

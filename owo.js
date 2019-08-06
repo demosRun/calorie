@@ -108,6 +108,10 @@ module.exports = {
       name: "main",
       src: "./src/main.js"
     },
+    {
+      name: "html2canvas",
+      src: "./src/resource/html2canvas.js"
+    },
   ],
   // 使用到的样式列表
   styleList: [
@@ -126,6 +130,10 @@ module.exports = {
     {
       name: 'two',
       src: './src/page/two.owo'
+    },
+    {
+      name: 'share',
+      src: './src/page/share.owo'
     }
   ],
   // 调试模式配置

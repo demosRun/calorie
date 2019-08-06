@@ -1,0 +1,93 @@
+<template lang="pug">
+.share
+  img.card(src="@|card-1.png|")
+  img.show(src="")
+  img.button(src="@|again.png|", :click="replay")
+  img.erCode(src="@|qr.png|")
+  .text @沸腾的卡路里
+</template>
+
+<script>
+  module.exports = {
+    data: {
+    },
+    created: function () {
+      document.body.classList.remove('horizontal')
+      document.body.style.width = '100%'
+      document.body.style.height = '100%'
+      document.body.style.left = 'unset'
+      document.body.style.top = 'unset'
+      document.body.style.position = 'relative'
+      this.$el.style.backgroundImage = 'url("@|share-bg-1.png|")'
+      setTimeout(() => {
+        html2canvas(this.$el).then((canvas) => {
+          // console.log(canvas.toDataURL("image/png"))
+          const image = this.query('.show')[0]
+          image.src = canvas.toDataURL("image/png")
+          image.style.display = 'block'
+          this.query('.button')[0].style.display = 'block'
+        })
+      }, 1000)
+    },
+    replay: function () {
+      location.replace('')
+    }
+  }
+</script>
+
+<style lang="less">
+.share {
+  width: 100%;
+  height: 100%;
+  background-size: 100%;
+}
+.show {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9;
+}
+.card {
+  width: 80%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+.button {
+  width: 25%;
+  right: 0;
+  left: 0;
+  top: 126vw;
+  bottom: 0;
+  margin: auto;
+  display: none;
+  position: absolute;
+  z-index: 12;
+}
+.text {
+  position: absolute;
+  left: 16%;
+  line-height: 24px;
+  height: 24px;
+  font-size: 18px;
+  bottom: 0;
+  top: -128vw;
+  margin: auto;
+  font-weight: bold;
+  color: #2145aa;
+}
+.erCode {
+  position: absolute;
+  width: 15%;
+  left: 30%;
+  top: 0;
+  bottom: -93vw;
+  margin: auto;
+}
+</style>
