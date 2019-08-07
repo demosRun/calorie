@@ -1,6 +1,7 @@
 <template lang="pug">
 .share
-  img.card(src="")
+  //- canvas.canv
+  .card
   img.show(src="")
   img.button(src="@|again.png|", :click="replay")
   img.erCode(src="@|qr.png|")
@@ -12,12 +13,16 @@
     data: {
     },
     created: function () {
-      if (!owo.state.kacl) location.replace('')
+      const screen = owo.tool.getScreenInfo()
+      // if (!owo.state.kacl) location.replace('')
+      owo.state.people = 'man'
       let start = 5
       if (owo.state.kacl > 800) start = 4
       if (owo.state.kacl > 1600) start = 3
       const bgURL = './static/resource/code-' + start + '.png'
-      this.query('.card')[0].src = './static/resource/' + owo.state.people + start + '.png'
+      this.query('.card')[0].backgroundImage = 'url("./static/resource/' + owo.state.people + start + '.png")'
+      this.query('.card')[0].style.height = 1.78 * screen.clientWidth * 0.8 + 'px'
+      console.log('url("./static/resource/' + owo.state.people + start + '.png")')
       this.query('.text')[0].innerText = '@' + owo.state.ID
       document.body.classList.remove('horizontal')
       document.body.style.width = '100%'
@@ -26,6 +31,28 @@
       document.body.style.top = 'unset'
       document.body.style.position = 'relative'
       this.$el.style.backgroundImage = `url("${bgURL}")`
+      // 画图
+
+      // const canv = this.query('canvas')[0]
+      // canv.width = screen.clientWidth * 4
+      // canv.height = screen.clientHeight * 4
+      // const ctx = canv.getContext("2d")
+      // const bgImg = new Image()
+      // bgImg.src = './static/resource/code-' + start + '.png'
+      // bgImg.onload = () => {
+      //   //以Canvas画布上的坐标(10,10)为起始点，绘制图像
+      //   ctx.drawImage(bgImg, 0, 0, canv.width, canv.height)
+      //   const cardWidth = canv.width * 0.8
+      //   const cardHeight = cardWidth * 1.78
+      //   // console.log(cardHeight / 4)
+      //   this.query('.card')
+      //   ctx.drawImage(this.query('.card')[0], screen.clientWidth * 0.1 * 4, (screen.clientHeight - cardHeight / 4) * 2, cardWidth, cardHeight)
+      //   // 二维码
+      //   const qrCodeWidth = canv.width * 0.15
+      //   ctx.drawImage(this.query('.erCode')[0], screen.clientWidth * 0.3 * 4, screen.clientWidth * 1.27 * 4, qrCodeWidth, qrCodeWidth)
+      //   ctx.font="60px Georgia";
+      //   ctx.fillText("Hello World!", screen.clientWidth * 0.15 * 4, screen.clientWidth * 0.26 * 4)
+      // }
       setTimeout(() => {
         html2canvas(this.$el).then((canvas) => {
           // console.log(canvas.toDataURL("image/png"))
@@ -33,8 +60,10 @@
           image.src = canvas.toDataURL("image/png")
           image.style.display = 'block'
           this.query('.button')[0].style.display = 'block'
+          // log(image.src.length)
         })
       }, 1000)
+      
     },
     replay: function () {
       location.replace('')
@@ -65,6 +94,9 @@
   margin: auto;
   left: 0;
   right: 0;
+  // background-size: 100% 100%;
+  background-size: contain;
+  background-image: url("./static/resource/man5.png");
 }
 .button {
   width: 25%;
@@ -96,5 +128,11 @@
   top: 0;
   bottom: -93vw;
   margin: auto;
+}
+canvas {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 999;
 }
 </style>

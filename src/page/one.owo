@@ -19,6 +19,8 @@
   img.one-13(src="@|one-13.png|")
   img.one-14(src="@|one-14.png|")
   img.one-15(src="@|one-15.png|")
+  //- 静音图标
+  img.music-play(src="http://cpc.people.com.cn/img/MAIN/2019/06/119357/images/music-active.png", :click="bgMusic")
 </template>
 
 <script>
@@ -48,16 +50,33 @@
       document.addEventListener('WeixinJSBridgeReady', () => {
         this.data.isplay = true
         setTimeout(() => {
-          new Audio("@|bg.mp3|").play()
+          owo.state.bgMusic = new Audio("@|bg.mp3|")
+          owo.state.bgMusic.play()
+          owo.state.musicIsPlay = true
         }, 0);
       })
     },
     start: function () {
       owo.go('two', 'scaleDown', 'moveFromBottom', 'scaleDown', 'moveFromTop')
+      owo.state.isplay = true
       // 播放音乐
       if (!this.data.isplay) {
-        var audio= new Audio("@|bg.mp3|")
-        audio.play()
+        owo.state.bgMusic= new Audio("@|bg.mp3|")
+        owo.state.bgMusic.play()
+        owo.state.musicIsPlay = true
+      }
+    },
+    bgMusic: function () {
+      if (owo.state.bgMusic) {
+        if (owo.state.musicIsPlay) {
+          owo.state.bgMusic.pause()
+          owo.state.musicIsPlay = false
+          this.query('.music-play')[0].src = 'http://cpc.people.com.cn/img/MAIN/2019/06/119357/images/music-muted.png'
+        } else {
+          owo.state.bgMusic.play()
+          owo.state.musicIsPlay = true
+          this.query('.music-play')[0].src = 'http://cpc.people.com.cn/img/MAIN/2019/06/119357/images/music-active.png'
+        }
       }
     }
   }

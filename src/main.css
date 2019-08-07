@@ -42,3 +42,15 @@ h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, bu
   -webkit-transform: translate3d(0, 0, 0) rotate(90deg);
           transform: translate3d(0, 0, 0) rotate(90deg);
 }
+
+.two {
+  display: none;
+}
+
+.music-play {
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  right: 10px;
+  top: 10px;
+}

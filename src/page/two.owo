@@ -99,8 +99,10 @@
   .show-box
     img.man(src="@|man-active.png|", :click="changeMan")
     img.woman(src="@|woman.png|", :click="changeWoman")
-    input.idInput(type="text", placeholder="输入ID")
+    input.idInput(type="text", placeholder="输入ID", :blur="inputEnd")
     img.button(src="@|button.png|", :click="next")
+  //- 静音图标
+  img.music-play(src="http://cpc.people.com.cn/img/MAIN/2019/06/119357/images/music-active.png", :click="bgMusic")
 </template>
 
 <script>
@@ -113,6 +115,7 @@
       scrollNumber: null
     },
     created: function () {
+      if (!owo.state.isplay) location.replace('')
       const twoBox = this.query('.box')[0]
       const content = $('.content')[0]
       const screen = owo.tool.getScreenInfo()
@@ -165,7 +168,8 @@
         
         // 默认只能翻2屏幕
         this.setShowPageNumber(2)
-      }, 500)
+        this.$el.style.display = "block"
+      }, 100)
     },
     setShowPageNumber: function (number) {
       let screenInfo = owo.tool.getScreenInfo()
@@ -282,6 +286,23 @@
       this.query('.man')[0].src = "@|man.png|"
       this.query('.woman')[0].src = "@|woman-active.png|"
       owo.state.people = 'woman'
+    },
+    bgMusic: function () {
+      if (owo.state.bgMusic) {
+        if (owo.state.musicIsPlay) {
+          owo.state.bgMusic.pause()
+          owo.state.musicIsPlay = false
+          this.query('.music-play')[0].src = 'http://cpc.people.com.cn/img/MAIN/2019/06/119357/images/music-muted.png'
+        } else {
+          owo.state.bgMusic.play()
+          owo.state.musicIsPlay = true
+          this.query('.music-play')[0].src = 'http://cpc.people.com.cn/img/MAIN/2019/06/119357/images/music-active.png'
+        }
+      }
+    },
+    inputEnd: function () {
+      console.log('sd')
+      $(window).scrollTop(0)
     }
   }
 </script>
@@ -381,6 +402,7 @@
     top: -100%;
     z-index: 999;
     transition: top 0.5s linear;
+    transform: translate3d(0px, 0px, 0px);
     .man {
       position: absolute;
       left: 20%;
