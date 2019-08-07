@@ -1,4 +1,4 @@
-// Wed Aug 07 2019 23:28:59 GMT+0800 (GMT+08:00)
+// Thu Aug 08 2019 01:39:36 GMT+0800 (GMT+08:00)
 
 /* 方法合集 */
 var _owo = {
@@ -198,7 +198,7 @@ owo.go = function (pageName, inAnimation, outAnimation, backInAnimation, backOut
       "forward": false
     }
   }
-  window.location.href = paramString + "#" + pageName
+  location.replace(paramString + "#" + pageName)
 }
 
 // url发生改变事件

@@ -97,8 +97,8 @@ module.exports = {
       src: "http://tools.people.com.cn/libs/jquery/3.0.0/jquery-3.0.0.min.js"
     },
     {
-      name: "lodash",
-      src: "http://www.people.com.cn/img/MAIN/2019/02/119071/script/lodash.core.js"
+      name: "preloadjs",
+      src: "./src/resource/preloadjs.js"
     },
     {
       name: "Scroller",
@@ -108,10 +108,10 @@ module.exports = {
       name: "Animate",
       src: "http://www.people.com.cn/img/MAIN/2019/02/119071/script/Animate.js"
     },
-    {
-      name: "EasyScroller",
-      src: "./src/resource/EasyScroller.js"
-    },
+    // {
+    //   name: "EasyScroller",
+    //   src: "./src/resource/EasyScroller.js"
+    // },
     {
       name: "main",
       src: "./src/main.js"

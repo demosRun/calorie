@@ -204,6 +204,30 @@ li {
   left: 59%;
   top: 19%;
 }
+
+[template="one"] .loading-box {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: black;
+  z-index: 999;
+  -webkit-transition: top 0.5s linear;
+  -o-transition: top 0.5s linear;
+  transition: top 0.5s linear;
+}
+
+[template="one"] .loading-box img {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
           [font="FZHZGBJW.TTF"] {
             font-family: 'FZHZGBJW';
           }
@@ -546,6 +570,30 @@ li {
   pointer-events: none;
 }
 
+[template="two"] .button-3 {
+  bottom: unset !important;
+  top: 6%;
+  left: 25% !important;
+}
+
+[template="two"] .button-6 {
+  bottom: unset !important;
+  top: 6%;
+  right: -50% !important;
+}
+
+[template="two"] .button-9 {
+  bottom: unset !important;
+  top: 6%;
+  left: -23% !important;
+}
+
+[template="two"] .button-15 {
+  bottom: unset !important;
+  top: 6%;
+  left: -53% !important;
+}
+
 @-webkit-keyframes fade {
   from {
     opacity: 1;
@@ -660,19 +708,26 @@ li {
   }
 }
 .share[template="share"] {
-  width: 100%;
-  height: 100%;
+  width: 400%;
+  height: 400%;
   background-size: 100%;
+  position: relative;
+  -webkit-transform: scale(0.25);
+       -o-transform: scale(0.25);
+          transform: scale(0.25);
+  -webkit-transform-origin: 0 0;
+       -o-transform-origin: 0 0;
+          transform-origin: 0 0;
 }
 
 [template="share"] .show {
-  display: none;
   width: 100%;
   height: 100%;
   position: absolute;
   left: 0;
   top: 0;
   z-index: 9;
+  opacity: 0;
 }
 
 [template="share"] .card {
@@ -684,29 +739,31 @@ li {
   left: 0;
   right: 0;
   background-size: contain;
-  background-image: url("./static/resource/man5.png");
 }
 
 [template="share"] .button {
   width: 25%;
   right: 0;
   left: 0;
-  top: 126vw;
+  top: 493vw;
   bottom: 0;
   margin: auto;
-  display: none;
   position: absolute;
   z-index: 12;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s linear;
+  -o-transition: opacity 0.5s linear;
+  transition: opacity 0.5s linear;
 }
 
 [template="share"] .text {
   position: absolute;
   left: 16%;
-  line-height: 24px;
-  height: 24px;
-  font-size: 18px;
+  line-height: 96px;
+  height: 96px;
+  font-size: 72px;
   bottom: 0;
-  top: -128vw;
+  top: -520vw;
   margin: auto;
   font-weight: bold;
   color: #2145aa;
@@ -717,8 +774,10 @@ li {
   width: 15%;
   left: 30%;
   top: 0;
-  bottom: -93vw;
+  bottom: -368vw;
   margin: auto;
+  background-size: 100% 100%;
+  background-image: url('./static/resource/qr.png');
 }
 
 [template="share"] canvas {
@@ -735,9 +794,9 @@ li {
   </head>
   <body>
     <!-- 页面区域 -->
-    <div class="one ox" :touchstart="start" template="one" style="display: none;"><img class="one-1" src="./static/resource/one-1.png"><img class="one-2" src="./static/resource/one-2.png"><img class="one-3" src="./static/resource/one-3.png"><img class="one-4" src="./static/resource/one-4.png"><img class="one-5" src="./static/resource/one-5.png"><img class="one-6" src="./static/resource/one-6.png"><img class="one-7" src="./static/resource/one-7.png"><img class="one-8" src="./static/resource/one-8.png"><img class="one-9" src="./static/resource/one-9.png"><img class="one-10" src="./static/resource/one-10.png"><img class="one-11" src="./static/resource/one-11.png"><img class="one-12" src="./static/resource/one-12.png"><img class="one-13" src="./static/resource/one-13.png"><img class="one-14" src="./static/resource/one-14.png"><img class="one-15" src="./static/resource/one-15.png"><img class="music-play" src="http://cpc.people.com.cn/img/MAIN/2019/06/119357/images/music-active.png" :click="bgMusic"></div>
+    <div class="one ox" :touchstart="start" template="one" style="display: none;"><img class="one-1" src="./static/resource/one-1.png"><img class="one-2" src="./static/resource/one-2.png"><img class="one-3" src="./static/resource/one-3.png"><img class="one-4" src="./static/resource/one-4.png"><img class="one-5" src="./static/resource/one-5.png"><img class="one-6" src="./static/resource/one-6.png"><img class="one-7" src="./static/resource/one-7.png"><img class="one-8" src="./static/resource/one-8.png"><img class="one-9" src="./static/resource/one-9.png"><img class="one-10" src="./static/resource/one-10.png"><img class="one-11" src="./static/resource/one-11.png"><img class="one-12" src="./static/resource/one-12.png"><img class="one-13" src="./static/resource/one-13.png"><img class="one-14" src="./static/resource/one-14.png"><img class="one-15" src="./static/resource/one-15.png"><img class="music-play" src="http://cpc.people.com.cn/img/MAIN/2019/06/119357/images/music-active.png" :click="bgMusic"><div class="loading-box"><img src="./static/resource/loading.svg"></div></div>
     <div class="two ox" template="two" style="display: none;"><div class="box" :touchstart="boxTouchstart" :touchmove="boxTouchmove" :touchend="boxTouchend"><img class="two-1" src="./static/resource/two-1.png"><img class="hand" src="http://www.people.com.cn/img/MAIN/2019/02/119071/images/1-hand.png"><div class="content"><img class="bg-line" src="./static/resource/two-bg.png"><img class="info-text" src="./static/resource/two-text.png"><div class="content-item content-2"><div class="left"><div class="kacl">+100kacl</div><img class="scene" src="./static/resource/two-2-1.png"><img class="nocolor-button-item button-1" :click="activeScene" src="./static/resource/two-button-1.png" kacl="14"></div><div class="right"><div class="kacl">+100kacl</div><img class="scene" src="./static/resource/two-2-2.png"><img class="nocolor-button-item button-2" :click="activeScene" src="./static/resource/two-button-2.png" kacl="-402"></div><div class="time-bar" font="FZHZGBJW.TTF">卯&nbsp;时&nbsp;&nbsp;05时至07时</div></div><div class="content-item content-3"><div class="left"><div class="kacl">+100kacl</div><img class="scene" src="./static/resource/two-3-1.png"><img class="nocolor-button-item button-3" :click="activeScene" src="./static/resource/two-button-3.png" kacl="641"></div><div class="right"><div class="kacl">+100kacl</div><img class="scene" src="./static/resource/two-3-2.png"><img class="nocolor-button-item button-4" :click="activeScene" src="./static/resource/two-button-4.png" kacl="558"></div><div class="time-bar" font="FZHZGBJW.TTF">辰&nbsp;时&nbsp;&nbsp;07时至09时</div></div><div class="content-item content-4"><div class="left"><div class="kacl">+100kacl</div><img class="scene" src="./static/resource/two-4-1.png"><img class="nocolor-button-item button-5" :click="activeScene" src="./static/resource/two-button-5.png" kacl="-68"></div><div class="right"><div class="kacl">+100kacl</div><img class="scene" src="./static/resource/two-4-2.png"><img class="nocolor-button-item button-6" :click="activeScene" src="./static/resource/two-button-6.png" kacl="-122"></div><div class="time-bar" font="FZHZGBJW.TTF">巳&nbsp;时&nbsp;&nbsp;09时至11时</div></div><div class="content-item content-5"><div class="left"><div class="kacl">+100kacl</div><img class="scene" src="./static/resource/two-5-1.png"><img class="nocolor-button-item button-7" :click="activeScene" src="./static/resource/two-button-7.png" kacl="680"></div><div class="right"><div class="kacl">+100kacl</div><img class="scene" src="./static/resource/two-5-2.png"><img class="nocolor-button-item button-8" :click="activeScene" src="./static/resource/two-button-8.png" kacl="223"></div><div class="time-bar" font="FZHZGBJW.TTF">辰&nbsp;时&nbsp;&nbsp;11时至13时</div></div><div class="content-item content-6"><div class="left"><div class="kacl">+100kacl</div><img class="scene" src="./static/resource/two-6-1.png"><img class="nocolor-button-item button-9" :click="activeScene" src="./static/resource/two-button-9.png" kacl="-68"></div><div class="right"><div class="kacl">+100kacl</div><img class="scene" src="./static/resource/two-6-2.png"><img class="nocolor-button-item button-10" :click="activeScene" src="./static/resource/two-button-10.png" kacl="-121"></div><div class="time-bar" font="FZHZGBJW.TTF">未&nbsp;时&nbsp;&nbsp;13时至15时</div></div><div class="content-item content-7"><div class="left"><div class="kacl">+100kacl</div><img class="scene" src="./static/resource/two-7-1.png"><img class="nocolor-button-item button-11" :click="activeScene" src="./static/resource/two-button-11.png" kacl="312"></div><div class="right"><div class="kacl">+100kacl</div><img class="scene" src="./static/resource/two-7-2.png"><img class="nocolor-button-item button-12" :click="activeScene" src="./static/resource/two-button-12.png" kacl="149"></div><div class="time-bar" font="FZHZGBJW.TTF">申&nbsp;时&nbsp;&nbsp;15时至17时</div></div><div class="content-item content-8"><div class="left"><div class="kacl">+100kacl</div><img class="scene" src="./static/resource/two-8-1.png"><img class="nocolor-button-item button-13" :click="activeScene" src="./static/resource/two-button-13.png" kacl="749"></div><div class="right"><div class="kacl">+100kacl</div><img class="scene" src="./static/resource/two-8-2.png"><img class="nocolor-button-item button-14" :click="activeScene" src="./static/resource/two-button-14.png" kacl="350"></div><div class="time-bar" font="FZHZGBJW.TTF">酉&nbsp;时&nbsp;&nbsp;17时至19时</div></div><div class="content-item content-9"><div class="left"><div class="kacl">+100kacl</div><img class="scene" src="./static/resource/two-9-1.png"><img class="nocolor-button-item button-15" :click="activeScene" src="./static/resource/two-button-15.png" kacl="682"></div><div class="right"><div class="kacl">+100kacl</div><img class="scene" src="./static/resource/two-9-2.png"><img class="nocolor-button-item button-16" :click="activeScene" src="./static/resource/two-button-16.png" kacl="-302"></div><div class="time-bar" font="FZHZGBJW.TTF">戌&nbsp;时&nbsp;&nbsp;17时至19时</div></div><div class="content-item content-10"><div class="left"><div class="kacl">+100kacl</div><img class="scene" src="./static/resource/two-10-1.png"><img class="nocolor-button-item button-17" :click="activeScene" src="./static/resource/two-button-17.png" kacl="277"></div><div class="right"><div class="kacl">+100kacl</div><img class="scene" src="./static/resource/two-10-2.png"><img class="nocolor-button-item button-18" :click="activeScene" src="./static/resource/two-button-18.png" kacl="14"></div><div class="time-bar" font="FZHZGBJW.TTF">亥&nbsp;时&nbsp;&nbsp;21时至23时</div></div></div></div><div class="show-box"><img class="man" src="./static/resource/man-active.png" :click="changeMan"><img class="woman" src="./static/resource/woman.png" :click="changeWoman"><input class="idInput" type="text" placeholder="输入ID" :blur="inputEnd"><img class="button" src="./static/resource/button.png" :click="next"></div><img class="music-play" src="http://cpc.people.com.cn/img/MAIN/2019/06/119357/images/music-active.png" :click="bgMusic"></div>
-    <div class="share ox" template="share" style="display: none;"><div class="card"></div><img class="show" src=""><img class="button" src="./static/resource/again.png" :click="replay"><img class="erCode" src="./static/resource/qr.png"><div class="text">@沸腾的卡路里</div></div>
+    <div class="share ox" template="share" style="display: none;"><div class="card"></div><img class="show" src=""><img class="button" src="./static/resource/again.png" :click="replay"><div class="erCode" src="./static/resource/qr.png"></div><div class="text">@沸腾的卡路里</div></div>
     <!-- 框架script代码 --><script>"use strict";
 
 // 存储页面基本信息
@@ -763,7 +822,95 @@ owo.script = {
     "created": function created() {
       var _this2 = this;
 
-      // 两个垃圾桶?从下方出现
+      var queue = new createjs.LoadQueue();
+      queue.on("complete", function () {
+        _this2.query('.loading-box')[0].style.top = '-100%';
+      }, this); // queue.on("change", (e) => {
+      //   console.log(e)
+      // });
+
+      queue.loadManifest([{
+        src: "./static/resource/one-1.png"
+      }, {
+        src: "./static/resource/one-2.png"
+      }, {
+        src: "./static/resource/one-3.png"
+      }, {
+        src: "./static/resource/one-4.png"
+      }, {
+        src: "./static/resource/one-5.png"
+      }, {
+        src: "./static/resource/one-6.png"
+      }, {
+        src: "./static/resource/one-7.png"
+      }, {
+        src: "./static/resource/one-8.png"
+      }, {
+        src: "./static/resource/one-9.png"
+      }, {
+        src: "./static/resource/one-10.png"
+      }, {
+        src: "./static/resource/one-11.png"
+      }, {
+        src: "./static/resource/one-12.png"
+      }, {
+        src: "./static/resource/one-13.png"
+      }, {
+        src: "./static/resource/one-14.png"
+      }, {
+        src: "./static/resource/one-15.png"
+      }, {
+        src: "./static/resource/two-color2-1.png"
+      }, {
+        src: "./static/resource/two-color2-2.png"
+      }, {
+        src: "./static/resource/two-color3-1.png"
+      }, {
+        src: "./static/resource/two-color3-2.png"
+      }, {
+        src: "./static/resource/two-color4-1.png"
+      }, {
+        src: "./static/resource/two-color4-2.png"
+      }, {
+        src: "./static/resource/two-color5-1.png"
+      }, {
+        src: "./static/resource/two-color5-2.png"
+      }, {
+        src: "./static/resource/two-color6-1.png"
+      }, {
+        src: "./static/resource/two-color6-2.png"
+      }, {
+        src: "./static/resource/two-color7-1.png"
+      }, {
+        src: "./static/resource/two-color7-2.png"
+      }, {
+        src: "./static/resource/two-color8-1.png"
+      }, {
+        src: "./static/resource/two-color8-2.png"
+      }, {
+        src: "./static/resource/two-color9-1.png"
+      }, {
+        src: "./static/resource/two-color9-2.png"
+      }, {
+        src: "./static/resource/two-color10-1.png"
+      }, {
+        src: "./static/resource/two-color10-2.png"
+      }, {
+        src: "./static/resource/code-3.png"
+      }, {
+        src: "./static/resource/code-4.png"
+      }, {
+        src: "./static/resource/code-5.png"
+      }, {
+        src: "./static/resource/man3.png"
+      }, {
+        src: "./static/resource/man4.png"
+      }, {
+        src: "./static/resource/man5.png"
+      }, {
+        src: "./static/resource/qr.png"
+      }]); // 两个垃圾桶?从下方出现
+
       owo.tool.animate('fadeInUp', this.query('.one-1')[0]);
       owo.tool.animate('fadeInUp', this.query('.one-2')[0]);
       owo.tool.animate('fadeInLeft', this.query('.one-3')[0], 400); // 楼从下方向上出现
@@ -789,6 +936,9 @@ owo.script = {
           owo.state.musicIsPlay = true;
         }, 0);
       });
+    },
+    "handleComplete": function handleComplete() {
+      console.log('ok');
     },
     "start": function start() {
       owo.go('two', 'scaleDown', 'moveFromBottom', 'scaleDown', 'moveFromTop');
@@ -1038,9 +1188,11 @@ owo.script = {
       if (owo.state.kacl > 800) start = 4;
       if (owo.state.kacl > 1600) start = 3;
       var bgURL = './static/resource/code-' + start + '.png';
-      this.query('.card')[0].backgroundImage = 'url("./static/resource/' + owo.state.people + start + '.png")';
-      this.query('.card')[0].style.height = 1.78 * screen.clientWidth * 0.8 + 'px';
-      console.log('url("./static/resource/' + owo.state.people + start + '.png")');
+      this.query('.card')[0].style.backgroundImage = 'url("./static/resource/' + owo.state.people + start + '.png")';
+      this.query('.card')[0].style.height = 1.78 * screen.clientWidth * 0.8 * 4 + 'px';
+      this.query('.erCode')[0].style.height = screen.clientWidth * 0.15 * 4 + 'px'; // console.log(this.query('.erCode')[0].offsetWidth)
+      // console.log('url("./static/resource/' + owo.state.people + start + '.png")')
+
       this.query('.text')[0].innerText = '@' + owo.state.ID;
       document.body.classList.remove('horizontal');
       document.body.style.width = '100%';
@@ -1071,13 +1223,14 @@ owo.script = {
       // }
 
       setTimeout(function () {
-        html2canvas(_this5.$el).then(function (canvas) {
+        html2canvas(_this5.$el, {
+          useCORS: true
+        }).then(function (canvas) {
           // console.log(canvas.toDataURL("image/png"))
           var image = _this5.query('.show')[0];
 
           image.src = canvas.toDataURL("image/png");
-          image.style.display = 'block';
-          _this5.query('.button')[0].style.display = 'block'; // log(image.src.length)
+          _this5.query('.button')[0].style.opacity = 1; // log(image.src.length)
         });
       }, 1000);
     },
@@ -1094,10 +1247,9 @@ owo.script = {
 <script src="./static/js/log.js" type="text/javascript" charset="UTF-8"></script>
 
     <script src="http://tools.people.com.cn/libs/jquery/3.0.0/jquery-3.0.0.min.js" type="text/javascript"  charset="UTF-8"></script>
-    <script src="http://www.people.com.cn/img/MAIN/2019/02/119071/script/lodash.core.js" type="text/javascript"  charset="UTF-8"></script>
+    <script src="./static/js/preloadjs.js" type="text/javascript"  charset="UTF-8"></script>
     <script src="http://www.people.com.cn/img/MAIN/2019/02/119071/script/Scroller.js" type="text/javascript"  charset="UTF-8"></script>
     <script src="http://www.people.com.cn/img/MAIN/2019/02/119071/script/Animate.js" type="text/javascript"  charset="UTF-8"></script>
-    <script src="./static/js/EasyScroller.js" type="text/javascript"  charset="UTF-8"></script>
     <script src="./static/js/main.js" type="text/javascript"  charset="UTF-8"></script>
     <script src="./static/js/html2canvas.js" type="text/javascript"  charset="UTF-8"></script>
   </body>

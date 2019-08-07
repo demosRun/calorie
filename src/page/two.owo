@@ -489,6 +489,26 @@
     width: 100%;
     pointer-events: none;
   }
+  .button-3 {
+    bottom: unset !important;
+    top: 6%;
+    left: 25% !important;
+  }
+  .button-6 {
+    bottom: unset !important;
+    top: 6%;
+    right: -50% !important;
+  }
+  .button-9 {
+    bottom: unset !important;
+    top: 6%;
+    left: -23% !important;
+  }
+  .button-15 {
+    bottom: unset !important;
+    top: 6%;
+    left: -53% !important;
+  }
   @keyframes fade {
     from {
       opacity: 1.0;

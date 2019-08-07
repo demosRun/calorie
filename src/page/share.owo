@@ -4,7 +4,7 @@
   .card
   img.show(src="")
   img.button(src="@|again.png|", :click="replay")
-  img.erCode(src="@|qr.png|")
+  .erCode(src="@|qr.png|")
   .text @沸腾的卡路里
 </template>
 
@@ -20,9 +20,11 @@
       if (owo.state.kacl > 800) start = 4
       if (owo.state.kacl > 1600) start = 3
       const bgURL = './static/resource/code-' + start + '.png'
-      this.query('.card')[0].backgroundImage = 'url("./static/resource/' + owo.state.people + start + '.png")'
-      this.query('.card')[0].style.height = 1.78 * screen.clientWidth * 0.8 + 'px'
-      console.log('url("./static/resource/' + owo.state.people + start + '.png")')
+      this.query('.card')[0].style.backgroundImage = 'url("./static/resource/' + owo.state.people + start + '.png")'
+      this.query('.card')[0].style.height = 1.78 * screen.clientWidth * 0.8 * 4 + 'px'
+      this.query('.erCode')[0].style.height = screen.clientWidth * 0.15 * 4 + 'px'
+      // console.log(this.query('.erCode')[0].offsetWidth)
+      // console.log('url("./static/resource/' + owo.state.people + start + '.png")')
       this.query('.text')[0].innerText = '@' + owo.state.ID
       document.body.classList.remove('horizontal')
       document.body.style.width = '100%'
@@ -54,12 +56,13 @@
       //   ctx.fillText("Hello World!", screen.clientWidth * 0.15 * 4, screen.clientWidth * 0.26 * 4)
       // }
       setTimeout(() => {
-        html2canvas(this.$el).then((canvas) => {
+        html2canvas(this.$el, {
+          useCORS: true,
+        }).then((canvas) => {
           // console.log(canvas.toDataURL("image/png"))
           const image = this.query('.show')[0]
           image.src = canvas.toDataURL("image/png")
-          image.style.display = 'block'
-          this.query('.button')[0].style.display = 'block'
+          this.query('.button')[0].style.opacity = 1
           // log(image.src.length)
         })
       }, 1000)
@@ -73,18 +76,21 @@
 
 <style lang="less">
 .share {
-  width: 100%;
-  height: 100%;
+  width: 400%;
+  height: 400%;
   background-size: 100%;
+  position: relative;
+  transform: scale(0.25);
+  transform-origin: 0 0;
 }
 .show {
-  display: none;
   width: 100%;
   height: 100%;
   position: absolute;
   left: 0;
   top: 0;
   z-index: 9;
+  opacity: 0;
 }
 .card {
   width: 80%;
@@ -96,27 +102,27 @@
   right: 0;
   // background-size: 100% 100%;
   background-size: contain;
-  background-image: url("./static/resource/man5.png");
 }
 .button {
   width: 25%;
   right: 0;
   left: 0;
-  top: 126vw;
+  top: 493vw;
   bottom: 0;
   margin: auto;
-  display: none;
   position: absolute;
   z-index: 12;
+  opacity: 0;
+  transition: opacity 0.5s linear;
 }
 .text {
   position: absolute;
   left: 16%;
-  line-height: 24px;
-  height: 24px;
-  font-size: 18px;
+  line-height: 96px;
+  height: 96px;
+  font-size: 72px;
   bottom: 0;
-  top: -128vw;
+  top: -520vw;
   margin: auto;
   font-weight: bold;
   color: #2145aa;
@@ -126,8 +132,10 @@
   width: 15%;
   left: 30%;
   top: 0;
-  bottom: -93vw;
+  bottom: -368vw;
   margin: auto;
+  background-size: 100% 100%;
+  background-image: url('@|qr.png|');
 }
 canvas {
   width: 100%;
