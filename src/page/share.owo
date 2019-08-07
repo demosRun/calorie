@@ -1,6 +1,6 @@
 <template lang="pug">
 .share
-  img.card(src="@|card-1.png|")
+  img.card(src="")
   img.show(src="")
   img.button(src="@|again.png|", :click="replay")
   img.erCode(src="@|qr.png|")
@@ -12,6 +12,12 @@
     data: {
     },
     created: function () {
+      if (!owo.state.kacl) location.replace('')
+      let start = 5
+      if (owo.state.kacl > 800) start = 4
+      if (owo.state.kacl > 1600) start = 3
+      const bgURL = './static/resource/code-' + start + '.png'
+      this.query('.card')[0].src = './static/resource/' + owo.state.people + start + '.png'
       this.query('.text')[0].innerText = '@' + owo.state.ID
       document.body.classList.remove('horizontal')
       document.body.style.width = '100%'
@@ -19,7 +25,7 @@
       document.body.style.left = 'unset'
       document.body.style.top = 'unset'
       document.body.style.position = 'relative'
-      this.$el.style.backgroundImage = 'url("@|share-bg-1.png|")'
+      this.$el.style.backgroundImage = `url("${bgURL}")`
       setTimeout(() => {
         html2canvas(this.$el).then((canvas) => {
           // console.log(canvas.toDataURL("image/png"))

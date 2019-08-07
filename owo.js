@@ -101,8 +101,16 @@ module.exports = {
       src: "http://www.people.com.cn/img/MAIN/2019/02/119071/script/lodash.core.js"
     },
     {
-      name: "iscroll-probe",
+      name: "Scroller",
       src: "http://www.people.com.cn/img/MAIN/2019/02/119071/script/Scroller.js"
+    },
+    {
+      name: "Animate",
+      src: "http://www.people.com.cn/img/MAIN/2019/02/119071/script/Animate.js"
+    },
+    {
+      name: "EasyScroller",
+      src: "./src/resource/EasyScroller.js"
     },
     {
       name: "main",

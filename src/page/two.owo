@@ -2,99 +2,103 @@
 .two
   .box(:touchstart="boxTouchstart", :touchmove="boxTouchmove", :touchend="boxTouchend")
     img.two-1(src="@|two-1.png|")
+    img.hand(src="http://www.people.com.cn/img/MAIN/2019/02/119071/images/1-hand.png")
     .content
+      img.bg-line(src="@|two-bg.png|")
+      img.info-text(src="@|two-text.png|")
       .content-item.content-2
         .left
           .kacl +100kacl
           img.scene(src="@|two-2-1.png|")
-          img.nocolor-button-item.button-1(:click="activeScene", src="@|two-button-1.png|")
+          img.nocolor-button-item.button-1(:click="activeScene", src="@|two-button-1.png|", kacl="14")
         .right
           .kacl +100kacl
           img.scene(src="@|two-2-2.png|")
-          img.nocolor-button-item.button-2(:click="activeScene", src="@|two-button-2.png|")
-        .time-bar 卯  时     05时至07时
+          img.nocolor-button-item.button-2(:click="activeScene", src="@|two-button-2.png|", kacl="-402")
+        .time-bar(font="FZHZGBJW.TTF") 卯&nbsp;时&nbsp;&nbsp;05时至07时
       .content-item.content-3
         .left
           .kacl +100kacl
           img.scene(src="@|two-3-1.png|")
-          img.nocolor-button-item.button-3(:click="activeScene", src="@|two-button-3.png|")
+          img.nocolor-button-item.button-3(:click="activeScene", src="@|two-button-3.png|", kacl="641")
         .right
           .kacl +100kacl
           img.scene(src="@|two-3-2.png|")
-          img.nocolor-button-item.button-4(:click="activeScene", src="@|two-button-4.png|")
-        .time-bar 辰  时     07时至09时
+          img.nocolor-button-item.button-4(:click="activeScene", src="@|two-button-4.png|", kacl="558")
+        .time-bar(font="FZHZGBJW.TTF") 辰&nbsp;时&nbsp;&nbsp;07时至09时
       .content-item.content-4
         .left
           .kacl +100kacl
           img.scene(src="@|two-4-1.png|")
-          img.nocolor-button-item.button-5(:click="activeScene", src="@|two-button-5.png|")
+          img.nocolor-button-item.button-5(:click="activeScene", src="@|two-button-5.png|", kacl="-68")
         .right
           .kacl +100kacl
           img.scene(src="@|two-4-2.png|")
-          img.nocolor-button-item.button-6(:click="activeScene", src="@|two-button-6.png|")
-        .time-bar 巳  时     09时至11时
+          img.nocolor-button-item.button-6(:click="activeScene", src="@|two-button-6.png|", kacl="-122")
+        .time-bar(font="FZHZGBJW.TTF") 巳&nbsp;时&nbsp;&nbsp;09时至11时
       .content-item.content-5
         .left
           .kacl +100kacl
           img.scene(src="@|two-5-1.png|")
-          img.nocolor-button-item.button-7(:click="activeScene", src="@|two-button-7.png|")
+          img.nocolor-button-item.button-7(:click="activeScene", src="@|two-button-7.png|", kacl="680")
         .right
           .kacl +100kacl
           img.scene(src="@|two-5-2.png|")
-          img.nocolor-button-item.button-8(:click="activeScene", src="@|two-button-8.png|")
-        .time-bar 辰  时     11时至13时
+          img.nocolor-button-item.button-8(:click="activeScene", src="@|two-button-8.png|", kacl="223")
+        .time-bar(font="FZHZGBJW.TTF") 辰&nbsp;时&nbsp;&nbsp;11时至13时
       .content-item.content-6
         .left
           .kacl +100kacl
           img.scene(src="@|two-6-1.png|")
-          img.nocolor-button-item.button-9(:click="activeScene", src="@|two-button-9.png|")
+          img.nocolor-button-item.button-9(:click="activeScene", src="@|two-button-9.png|", kacl="-68")
         .right
           .kacl +100kacl
           img.scene(src="@|two-6-2.png|")
-          img.nocolor-button-item.button-10(:click="activeScene", src="@|two-button-10.png|")
-        .time-bar 未  时     13时至15时
+          img.nocolor-button-item.button-10(:click="activeScene", src="@|two-button-10.png|", kacl="-121")
+        .time-bar(font="FZHZGBJW.TTF") 未&nbsp;时&nbsp;&nbsp;13时至15时
       .content-item.content-7
         .left
           .kacl +100kacl
           img.scene(src="@|two-7-1.png|")
-          img.nocolor-button-item.button-11(:click="activeScene", src="@|two-button-11.png|")
+          img.nocolor-button-item.button-11(:click="activeScene", src="@|two-button-11.png|", kacl="312")
         .right
           .kacl +100kacl
           img.scene(src="@|two-7-2.png|")
-          img.nocolor-button-item.button-12(:click="activeScene", src="@|two-button-12.png|")
-        .time-bar 申  时     15时至17时
+          img.nocolor-button-item.button-12(:click="activeScene", src="@|two-button-12.png|", kacl="149")
+        .time-bar(font="FZHZGBJW.TTF") 申&nbsp;时&nbsp;&nbsp;15时至17时
       .content-item.content-8
         .left
           .kacl +100kacl
           img.scene(src="@|two-8-1.png|")
-          img.nocolor-button-item.button-13(:click="activeScene", src="@|two-button-13.png|")
+          img.nocolor-button-item.button-13(:click="activeScene", src="@|two-button-13.png|", kacl="749")
         .right
           .kacl +100kacl
           img.scene(src="@|two-8-2.png|")
-          img.nocolor-button-item.button-14(:click="activeScene", src="@|two-button-14.png|")
-        .time-bar 酉  时     17时至19时
+          img.nocolor-button-item.button-14(:click="activeScene", src="@|two-button-14.png|", kacl="350")
+        .time-bar(font="FZHZGBJW.TTF") 酉&nbsp;时&nbsp;&nbsp;17时至19时
       .content-item.content-9
         .left
           .kacl +100kacl
           img.scene(src="@|two-9-1.png|")
-          img.nocolor-button-item.button-15(:click="activeScene", src="@|two-button-15.png|")
+          img.nocolor-button-item.button-15(:click="activeScene", src="@|two-button-15.png|", kacl="682")
         .right
           .kacl +100kacl
           img.scene(src="@|two-9-2.png|")
-          img.nocolor-button-item.button-16(:click="activeScene", src="@|two-button-16.png|")
-        .time-bar 戌  时     17时至19时
+          img.nocolor-button-item.button-16(:click="activeScene", src="@|two-button-16.png|", kacl="-302")
+        .time-bar(font="FZHZGBJW.TTF") 戌&nbsp;时&nbsp;&nbsp;17时至19时
       .content-item.content-10
         .left
           .kacl +100kacl
           img.scene(src="@|two-10-1.png|")
-          img.nocolor-button-item.button-17(:click="activeScene", src="@|two-button-17.png|")
+          img.nocolor-button-item.button-17(:click="activeScene", src="@|two-button-17.png|", kacl="277")
         .right
           .kacl +100kacl
           img.scene(src="@|two-10-2.png|")
-          img.nocolor-button-item.button-18(:click="activeScene", src="@|two-button-18.png|")
-        .time-bar 亥  时     21时至23时
+          img.nocolor-button-item.button-18(:click="activeScene", src="@|two-button-18.png|", kacl="14")
+        .time-bar(font="FZHZGBJW.TTF") 亥&nbsp;时&nbsp;&nbsp;21时至23时
   .show-box
-    img.people(src="@|people.png|")
+    img.man(src="@|man-active.png|", :click="changeMan")
+    img.woman(src="@|woman.png|", :click="changeWoman")
     input.idInput(type="text", placeholder="输入ID")
     img.button(src="@|button.png|", :click="next")
 </template>
@@ -103,33 +107,36 @@
   module.exports = {
     data: {
       scroller: null,
-      scale: 1
+      scale: 1,
+      scaleX: 1,
+      userMoveing: false,
+      scrollNumber: null
     },
     created: function () {
       const twoBox = this.query('.box')[0]
       const content = $('.content')[0]
       const screen = owo.tool.getScreenInfo()
-      let scaleX = 1
+      this.data.scaleX = 1
       let translateZ = 0
-      let translateScale = 0
-      let proportion = 0
+      this.data.translateScale = 0
+      this.data.proportion = 0
       if (screen.ratio > 1) {
         content.style.width = screen.clientWidth * 9 + 'px'
         content.style.height = screen.clientWidth / 1.6 + 'px'
-        scaleX = screen.clientWidth * 10 / 15985
+        this.data.scaleX = screen.clientWidth * 10 / 15985
         translateZ = (screen.clientWidth / 1.6 - screen.clientHeight) / 2
-        translateScale = translateZ / screen.clientHeight
-        proportion = (screen.clientWidth / 1.6) / screen.clientHeight
+        this.data.translateScale = translateZ / screen.clientHeight
+        this.data.proportion = (screen.clientWidth / 1.6) / screen.clientHeight
         this.query('.content-item').forEach(element => {
           element.style.width = screen.clientWidth + 'px'
         })
       } else {
         content.style.width = screen.clientHeight * 9 + 'px'
         content.style.height = screen.clientHeight / 1.6 + 'px'
-        scaleX = screen.clientHeight * 10 / 15985
+        this.data.scaleX = screen.clientHeight * 10 / 15985
         translateZ = (screen.clientHeight / 1.6 - screen.clientWidth) / 2
-        translateScale = translateZ / screen.clientWidth
-        proportion = (screen.clientHeight / 1.6) / screen.clientWidth
+        this.data.translateScale = translateZ / screen.clientWidth
+        this.data.proportion = (screen.clientHeight / 1.6) / screen.clientWidth
         this.query('.content-item').forEach(element => {
           element.style.width = screen.clientHeight + 'px'
         })
@@ -139,21 +146,23 @@
 
       setTimeout(() => {
         // console.log(isHorizontal)
-        this.data.scroller = new Scroller(function (left, top, zoom) {
-          var scrollNumber = isHorizontal ? top : left
+        this.data.scroller = new Scroller((left, top, zoom) => {
+          this.data.scrollNumber = isHorizontal ? top : left
 
           // var X = -parseInt(myScroll.x / radio)
           // console.log(X)
-          var X = parseInt((scrollNumber + 40) / scaleX)
+          var X = parseInt(( this.data.scrollNumber + 40) / this.data.scaleX)
           // 使小人脚正好在线上
           // console.log(proportion)
-          people.style.bottom = (pathPeople[X] - translateScale) * 100 * proportion + '%'
+          people.style.bottom = (pathPeople[X] - this.data.translateScale) * 100 * this.data.proportion + '%'
           // people.style.left = scrollNumber + 'px'
-          content.style.transform = `translate(-${scrollNumber}px, -${translateZ}px)`
+          content.style.transform = `translate3d(-${ this.data.scrollNumber}px, -${translateZ}px, 0)`
         }, {
-          zooming: true,
-          bouncing: false
+          zooming: false,
+          bouncing: false,
+          animating: true,
         })
+        
         // 默认只能翻2屏幕
         this.setShowPageNumber(2)
       }, 500)
@@ -168,7 +177,12 @@
     },
     boxTouchstart: function () {
       // console.log('开始')
+      this.query('.hand')[0].style.display = 'none'
+      this.data.userMoveing = true
       const e = this.$event
+      setTimeout(() => {
+        $('.two-1')[0].style.left = '40px'
+      }, 100)
       this.data.scroller.doTouchStart(e.touches, e.timeStamp)
     },
     boxTouchmove: function () {
@@ -177,12 +191,22 @@
     },
     boxTouchend: function () {
       // console.log('结束')
+      this.data.userMoveing = true
       const e = this.$event
       this.data.scroller.doTouchEnd(e.timeStamp)
     },
     activeScene: function () {
+      const kacl = parseInt(this.$event.target.getAttribute('kacl'))
+      if (owo.state.kacl == undefined) owo.state.kacl = 0
+      owo.state.kacl += kacl
       // 获取到父级元素
       const parent = this.$event.target.parentElement
+      if (kacl > 0) {
+        parent.getElementsByClassName('kacl')[0].innerText = '+' + kacl + 'kacl' 
+      } else {
+        parent.getElementsByClassName('kacl')[0].innerText = kacl + 'kacl'
+      }
+      
       // 按钮停止闪烁
       this.$event.target.classList.remove('twinkle')
       // 标记父元素为已激活状态
@@ -198,12 +222,47 @@
       // 允许进行下一步
       if (activeLenght < 9) {
         this.setShowPageNumber(activeLenght + 2)
+        // console.log(this.data.scroller)
+        setTimeout(() => {
+          const screen = owo.tool.getScreenInfo()
+          if (screen.ratio > 1) {
+            this.data.scroller.scrollTo((activeLenght + 2) *screen.clientWidth, 0, true)
+          } else {
+            this.data.scroller.scrollTo(0, (activeLenght + 2) * screen.clientHeight, true)
+          }
+        }, 1000)
       } else {
         // 如果已经是最后了弹出ID输入框
         setTimeout(() => {
           this.query('.show-box')[0].style.top = '0'
+          owo.state.people = 'man'
         }, 500)
       }
+      // 小人自发的往前走
+      const people = $('.two-1')[0]
+      let left = 40
+      const screen = owo.tool.getScreenInfo()
+      const _this = this
+      function run (num) {
+        // console.log(num)
+        left += 5
+        var X = parseInt((_this.data.scrollNumber + left) / _this.data.scaleX)
+        people.style.left = left + 'px'
+        people.style.bottom = (pathPeople[X] - _this.data.translateScale) * 100 * _this.data.proportion + '%'
+        if (left < num && !_this.data.userMoveing) {
+          setTimeout(() => {
+            run(num)
+          }, 20)
+        }
+      }
+      this.data.userMoveing = false
+      setTimeout(() => {
+        if (screen.ratio > 1) {
+          run(screen.clientWidth / 2)
+        } else {
+          run(screen.clientHeight / 2)
+        }
+      }, 2000)
     },
     next: function () {
       const ID = this.query('.idInput')[0].value
@@ -213,6 +272,16 @@
       } else {
         alert('ID不能为空!')
       }
+    },
+    changeMan: function () {
+      this.query('.man')[0].src = "@|man-active.png|"
+      this.query('.woman')[0].src = "@|woman.png|"
+      owo.state.people = 'man'
+    },
+    changeWoman: function () {
+      this.query('.man')[0].src = "@|man.png|"
+      this.query('.woman')[0].src = "@|woman-active.png|"
+      owo.state.people = 'woman'
     }
   }
 </script>
@@ -225,8 +294,6 @@
   }
   .content {
     height: 100%;
-    background-image: url('@|two-bg.png|');
-    background-size: 100% 100%;
     z-index: 3;
     display: flex;
     padding-left: 100%;
@@ -242,9 +309,9 @@
   .two-1 {
     height: 15%;
     position: absolute;
-    z-index: -1;
+    z-index: 1;
     left: 40px;
-    transform: translate(-50%, 0px);
+    transform: translate(-50%, 0px) translate3d(0px, 0px, 0px);
   }
   .kacl {
     position: absolute;
@@ -284,6 +351,7 @@
       cursor: pointer;
       pointer-events: unset;
       animation: fade 2000ms infinite;
+      transform: translate3d(0, 0px, 0px);
     }
   }
   .active .nocolor-button-item {
@@ -313,12 +381,16 @@
     top: -100%;
     z-index: 999;
     transition: top 0.5s linear;
-    .people {
+    .man {
       position: absolute;
-      height: 25%;
-      left: 0;
-      right: 0;
-      margin: auto;
+      left: 20%;
+      height: 28%;
+      top: 10%;
+    }
+    .woman {
+      position: absolute;
+      right: 20%;
+      height: 28%;
       top: 10%;
     }
     input {
@@ -343,18 +415,24 @@
   }
   .content-3 {
     background-color: rgba(224, 203, 184, 0.4);
+    z-index: -1;
   }
   .content-4 {
+    z-index: -1;
     background-color: rgba(203, 178, 156, 0.4);
   }
   .content-5 {
     background-color: rgba(177, 151, 134, 0.4);
   }
   .content-6 {
+    z-index: -1;
     background-color: rgba(187, 146, 116, 0.4);
   }
   .content-7 {
     background-color: rgba(177, 127, 92, 0.4);
+  }
+  .content-9 {
+    z-index: -1;
   }
   .button {
     position: absolute;
@@ -363,6 +441,31 @@
     margin: auto;
     height: 15%;
     top: 74%;
+  }
+  .info-text {
+    position: absolute;
+    left: 340px;
+    top: 18%;
+    height: 5%;
+    background-color: #e0d5ca;
+  }
+  .hand {
+    position: absolute;
+    height: 10%;
+    left: 518px;
+    top: 27%;
+    animation-name: scale2;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+  .bg-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
   }
   @keyframes fade {
     from {
@@ -385,6 +488,15 @@
       opacity: 1;
       top: 10%;
       font-size: 24px;
+    }
+  }
+  @keyframes scale2 {
+    0% {
+      left: 480px;
+    }
+
+    100% {
+      left: 418px;
     }
   }
 </style>

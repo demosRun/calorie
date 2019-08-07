@@ -1,5 +1,5 @@
 <template lang="pug">
-.one(:click="start")
+.one(:touchstart="start")
   img.one-1(src="@|one-1.png|")
   img.one-2(src="@|one-2.png|")
   //- 骑自行车的人
@@ -19,14 +19,12 @@
   img.one-13(src="@|one-13.png|")
   img.one-14(src="@|one-14.png|")
   img.one-15(src="@|one-15.png|")
-  //- 滑动进入下一页
-  img.one-16(src="@|one-16.png|")
-  img.one-17(src="@|one-17.png|")
 </template>
 
 <script>
   module.exports = {
     data: {
+      isplay: false
     },
     created: function () {
       // 两个垃圾桶?从下方出现
@@ -46,18 +44,21 @@
       owo.tool.animate('bounceInDown', this.query('.one-13')[0], 2500)
       owo.tool.animate('bounceInDown', this.query('.one-14')[0], 2500)
       owo.tool.animate('bounceIn', this.query('.one-15')[0], 2800)
-      owo.tool.animate('bounceIn', this.query('.one-16')[0], 2800)
-      owo.tool.animate('bounceIn', this.query('.one-17')[0], 2800)
       // 滑动提示
+      document.addEventListener('WeixinJSBridgeReady', () => {
+        this.data.isplay = true
+        setTimeout(() => {
+          new Audio("@|bg.mp3|").play()
+        }, 0);
+      })
     },
     start: function () {
-      this.query('.one-17')[0].classList.add('huxian')
-      setTimeout(() => {
-        owo.go('two', 'scaleDown', 'moveFromBottom', 'scaleDown', 'moveFromTop')
-        // 播放音乐
+      owo.go('two', 'scaleDown', 'moveFromBottom', 'scaleDown', 'moveFromTop')
+      // 播放音乐
+      if (!this.data.isplay) {
         var audio= new Audio("@|bg.mp3|")
         audio.play()
-      }, 500)
+      }
     }
   }
 </script>
@@ -158,7 +159,8 @@ img {
   left: 0;
   right: 0;
   margin: auto;
-  top: 23%;
+  top: 14%;
+  z-index: 6;
 }
 .one-16 {
   height: 26%;
@@ -171,7 +173,7 @@ img {
   z-index: 0;
   height: 10%;
   position: absolute;
-  left: 63%;
+  left: 59%;
   top: 19%;
 }
 </style>
