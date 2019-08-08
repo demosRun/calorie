@@ -21,19 +21,53 @@
   img.one-15(src="@|one-15.png|")
   //- 静音图标
   img.music-play(src="http://cpc.people.com.cn/img/MAIN/2019/06/119357/images/music-active.png", :click="bgMusic")
-  .loading-box
-    img(src="@|loading.svg|")
+  .loading-box.lock
+    img.lock-img(src="@|lock.png|")
+    .text 为了更好的体验，请将屏幕锁定观看
+    img.loading(src="@|loading.svg|")
+    .load-text 正在加载...
 </template>
 
 <script>
   module.exports = {
     data: {
-      isplay: false
+      isplay: false,
+      loadComplete: false
     },
     created: function () {
+      if (owo.tool.getScreenInfo().ratio > 1) {
+        this.query('.loading')[0].style.display = 'none'
+        this.query('.load-text')[0].style.display = 'none'
+        // this.query('.lock')[0].style.display = 'block'
+        return
+      }
       var queue = new createjs.LoadQueue()
+      queue.on("progress", (event) => {
+        this.query('.load-text')[0].innerText = '已加载: ' + (queue.progress * 100 | 0) + " %"
+      })
       queue.on("complete", () => {
+        this.data.loadComplete = true
         this.query('.loading-box')[0].style.top = '-100%'
+        // 两个垃圾桶?从下方出现
+        owo.tool.animate('fadeInUp', this.query('.one-1')[0])
+        owo.tool.animate('fadeInUp', this.query('.one-2')[0])
+        owo.tool.animate('fadeInLeft', this.query('.one-3')[0], 400)
+        // 楼从下方向上出现
+        owo.tool.animate('fadeInUp', this.query('.one-4')[0], 1000)
+        owo.tool.animate('fadeInUp', this.query('.one-5')[0], 1200)
+        owo.tool.animate('fadeInUp', this.query('.one-6')[0], 1400)
+        owo.tool.animate('fadeInUp', this.query('.one-7')[0], 1600)
+        owo.tool.animate('fadeInUp', this.query('.one-8')[0], 1800)
+        // 马路上的人逐渐出现
+        owo.tool.animate('fadeIn', this.query('.one-10')[0], 2000)
+        owo.tool.animate('fadeIn', this.query('.one-11')[0], 2000)
+        owo.tool.animate('fadeIn', this.query('.one-12')[0], 2000)
+        owo.tool.animate('bounceInDown', this.query('.one-13')[0], 2500)
+        owo.tool.animate('bounceInDown', this.query('.one-14')[0], 2500)
+        owo.tool.animate('bounceIn', this.query('.one-15')[0], 2800)
+        setTimeout(() => {
+          this.start()
+        }, 5000)
       }, this)
       // queue.on("change", (e) => {
       //   console.log(e)
@@ -78,25 +112,22 @@
         {src:"@|man3.png|"},
         {src:"@|man4.png|"},
         {src:"@|man5.png|"},
+        {src:"@|woman3.png|"},
+        {src:"@|woman4.png|"},
+        {src:"@|woman5.png|"},
         {src:"@|qr.png|"},
+        {src:"@|two-bg.png|"},
+        {src:"@|two-text.png|"},
+        {src:"@|stars-3.png|"},
+        {src:"@|stars-4.png|"},
+        {src:"@|stars-5.png|"},
+        {src:"@|text-3.png|"},
+        {src:"@|text-4.png|"},
+        {src:"@|text-5.png|"},
+        {src:"@|stars.mp3|"},
+        {src:"@|dingdong.mp3|"},
       ])
-      // 两个垃圾桶?从下方出现
-      owo.tool.animate('fadeInUp', this.query('.one-1')[0])
-      owo.tool.animate('fadeInUp', this.query('.one-2')[0])
-      owo.tool.animate('fadeInLeft', this.query('.one-3')[0], 400)
-      // 楼从下方向上出现
-      owo.tool.animate('fadeInUp', this.query('.one-4')[0], 1000)
-      owo.tool.animate('fadeInUp', this.query('.one-5')[0], 1200)
-      owo.tool.animate('fadeInUp', this.query('.one-6')[0], 1400)
-      owo.tool.animate('fadeInUp', this.query('.one-7')[0], 1600)
-      owo.tool.animate('fadeInUp', this.query('.one-8')[0], 1800)
-      // 马路上的人逐渐出现
-      owo.tool.animate('fadeIn', this.query('.one-10')[0], 2000)
-      owo.tool.animate('fadeIn', this.query('.one-11')[0], 2000)
-      owo.tool.animate('fadeIn', this.query('.one-12')[0], 2000)
-      owo.tool.animate('bounceInDown', this.query('.one-13')[0], 2500)
-      owo.tool.animate('bounceInDown', this.query('.one-14')[0], 2500)
-      owo.tool.animate('bounceIn', this.query('.one-15')[0], 2800)
+
       // 滑动提示
       document.addEventListener('WeixinJSBridgeReady', () => {
         this.data.isplay = true
@@ -107,18 +138,18 @@
         }, 0);
       })
     },
-    handleComplete: function () {
-      console.log('ok')
-    },
     start: function () {
-      owo.go('two', 'scaleDown', 'moveFromBottom', 'scaleDown', 'moveFromTop')
-      owo.state.isplay = true
-      // 播放音乐
-      if (!this.data.isplay) {
-        owo.state.bgMusic= new Audio("@|bg.mp3|")
-        owo.state.bgMusic.play()
-        owo.state.musicIsPlay = true
+      if (!owo.state.isplay && this.data.loadComplete) {
+        owo.go('two', 'scaleDown', 'moveFromBottom', 'scaleDown', 'moveFromTop', null, true)
+        owo.state.isplay = true
+        // 播放音乐
+        if (!this.data.isplay) {
+          owo.state.bgMusic= new Audio("@|bg.mp3|")
+          owo.state.bgMusic.play()
+          owo.state.musicIsPlay = true
+        }
       }
+      
     },
     bgMusic: function () {
       if (owo.state.bgMusic) {
@@ -228,12 +259,12 @@ img {
   top: 4%;
 }
 .one-15 {
-  height: 35%;
+  height: 44%;
   left: 0;
   right: 0;
   margin: auto;
   top: 14%;
-  z-index: 6;
+  z-index: 10;
 }
 .one-16 {
   height: 26%;
@@ -255,18 +286,56 @@ img {
   height: 100%;
   top: 0;
   left: 0;
-  background-color: black;
-  z-index: 999;
+  z-index: 100;
   transition: top 0.5s linear;
-  img {
+  .loading {
     width: 80px;
     height: 80px;
+    position: absolute;
+    right: 10px;
+    bottom: 30px;
+    margin: auto;
+  }
+}
+.lock {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  margin: auto;
+  z-index: 999;
+  background-color: #333;
+  .lock-img {
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
-    bottom: 0;
+    bottom: 80px;
     margin: auto;
   }
+  .text {
+    height: 40px;
+    line-height: 40px;
+    width: 280px;
+    color: white;
+    font-size: 14px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100px;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+    font-weight: bold;
+  }
+}
+.load-text {
+  color: white;
+  right: 10px;
+  position: absolute;
+  width: 80px;
+  text-align: center;
+  bottom: 5px;
 }
 </style>

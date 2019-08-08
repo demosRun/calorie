@@ -25,7 +25,7 @@ window.addEventListener("onorientationchange" in window ? "orientationchange" : 
  
 function hengshuping() {
   if (window.orientation == 90 || window.orientation == -90) {
-    alert('建议在竖屏下浏览!')
+    owo.tool.toast('建议在手机竖屏模式浏览哦！')
     location.replace('')
   } else {
     location.replace('')

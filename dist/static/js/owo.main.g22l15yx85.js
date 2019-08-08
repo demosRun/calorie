@@ -1,4 +1,4 @@
-// Wed Aug 07 2019 11:06:06 GMT+0800 (GMT+08:00)
+// Thu Aug 08 2019 13:54:03 GMT+0800 (GMT+08:00)
 
 "use strict";
 
@@ -20,106 +20,262 @@ var owo = {
 owo.script = {
   "one": {
     "data": {
-      "isplay": false
+      "isplay": false,
+      "loadComplete": false
     },
     "created": function created() {
-      var _this = this;
+      var _this2 = this;
 
-      // 两个垃圾桶?从下方出现
-      owo.tool.animate('fadeInUp', this.query('.one-1')[0]);
-      owo.tool.animate('fadeInUp', this.query('.one-2')[0]);
-      owo.tool.animate('fadeInLeft', this.query('.one-3')[0], 400); // 楼从下方向上出现
+      if (owo.tool.getScreenInfo().ratio > 1) {
+        this.query('.loading')[0].style.display = 'none';
+        this.query('.load-text')[0].style.display = 'none'; // this.query('.lock')[0].style.display = 'block'
 
-      owo.tool.animate('fadeInUp', this.query('.one-4')[0], 1000);
-      owo.tool.animate('fadeInUp', this.query('.one-5')[0], 1200);
-      owo.tool.animate('fadeInUp', this.query('.one-6')[0], 1400);
-      owo.tool.animate('fadeInUp', this.query('.one-7')[0], 1600);
-      owo.tool.animate('fadeInUp', this.query('.one-8')[0], 1800); // 马路上的人逐渐出现
+        return;
+      }
 
-      owo.tool.animate('fadeIn', this.query('.one-10')[0], 2000);
-      owo.tool.animate('fadeIn', this.query('.one-11')[0], 2000);
-      owo.tool.animate('fadeIn', this.query('.one-12')[0], 2000);
-      owo.tool.animate('bounceInDown', this.query('.one-13')[0], 2500);
-      owo.tool.animate('bounceInDown', this.query('.one-14')[0], 2500);
-      owo.tool.animate('bounceIn', this.query('.one-15')[0], 2800);
-      owo.tool.animate('bounceIn', this.query('.one-16')[0], 2800);
-      owo.tool.animate('bounceIn', this.query('.one-17')[0], 2800); // 滑动提示
+      var queue = new createjs.LoadQueue();
+      queue.on("progress", function (event) {
+        _this2.query('.load-text')[0].innerText = '已加载: ' + (queue.progress * 100 | 0) + " %";
+      });
+      queue.on("complete", function () {
+        _this2.data.loadComplete = true;
+        _this2.query('.loading-box')[0].style.top = '-100%'; // 两个垃圾桶?从下方出现
+
+        owo.tool.animate('fadeInUp', _this2.query('.one-1')[0]);
+        owo.tool.animate('fadeInUp', _this2.query('.one-2')[0]);
+        owo.tool.animate('fadeInLeft', _this2.query('.one-3')[0], 400); // 楼从下方向上出现
+
+        owo.tool.animate('fadeInUp', _this2.query('.one-4')[0], 1000);
+        owo.tool.animate('fadeInUp', _this2.query('.one-5')[0], 1200);
+        owo.tool.animate('fadeInUp', _this2.query('.one-6')[0], 1400);
+        owo.tool.animate('fadeInUp', _this2.query('.one-7')[0], 1600);
+        owo.tool.animate('fadeInUp', _this2.query('.one-8')[0], 1800); // 马路上的人逐渐出现
+
+        owo.tool.animate('fadeIn', _this2.query('.one-10')[0], 2000);
+        owo.tool.animate('fadeIn', _this2.query('.one-11')[0], 2000);
+        owo.tool.animate('fadeIn', _this2.query('.one-12')[0], 2000);
+        owo.tool.animate('bounceInDown', _this2.query('.one-13')[0], 2500);
+        owo.tool.animate('bounceInDown', _this2.query('.one-14')[0], 2500);
+        owo.tool.animate('bounceIn', _this2.query('.one-15')[0], 2800);
+        setTimeout(function () {
+          _this2.start();
+        }, 5000);
+      }, this); // queue.on("change", (e) => {
+      //   console.log(e)
+      // });
+
+      queue.loadManifest([{
+        src: "./static/resource/one-1.png"
+      }, {
+        src: "./static/resource/one-2.png"
+      }, {
+        src: "./static/resource/one-3.png"
+      }, {
+        src: "./static/resource/one-4.png"
+      }, {
+        src: "./static/resource/one-5.png"
+      }, {
+        src: "./static/resource/one-6.png"
+      }, {
+        src: "./static/resource/one-7.png"
+      }, {
+        src: "./static/resource/one-8.png"
+      }, {
+        src: "./static/resource/one-9.png"
+      }, {
+        src: "./static/resource/one-10.png"
+      }, {
+        src: "./static/resource/one-11.png"
+      }, {
+        src: "./static/resource/one-12.png"
+      }, {
+        src: "./static/resource/one-13.png"
+      }, {
+        src: "./static/resource/one-14.png"
+      }, {
+        src: "./static/resource/one-15.png"
+      }, {
+        src: "./static/resource/two-color2-1.png"
+      }, {
+        src: "./static/resource/two-color2-2.png"
+      }, {
+        src: "./static/resource/two-color3-1.png"
+      }, {
+        src: "./static/resource/two-color3-2.png"
+      }, {
+        src: "./static/resource/two-color4-1.png"
+      }, {
+        src: "./static/resource/two-color4-2.png"
+      }, {
+        src: "./static/resource/two-color5-1.png"
+      }, {
+        src: "./static/resource/two-color5-2.png"
+      }, {
+        src: "./static/resource/two-color6-1.png"
+      }, {
+        src: "./static/resource/two-color6-2.png"
+      }, {
+        src: "./static/resource/two-color7-1.png"
+      }, {
+        src: "./static/resource/two-color7-2.png"
+      }, {
+        src: "./static/resource/two-color8-1.png"
+      }, {
+        src: "./static/resource/two-color8-2.png"
+      }, {
+        src: "./static/resource/two-color9-1.png"
+      }, {
+        src: "./static/resource/two-color9-2.png"
+      }, {
+        src: "./static/resource/two-color10-1.png"
+      }, {
+        src: "./static/resource/two-color10-2.png"
+      }, {
+        src: "./static/resource/code-3.png"
+      }, {
+        src: "./static/resource/code-4.png"
+      }, {
+        src: "./static/resource/code-5.png"
+      }, {
+        src: "./static/resource/man3.png"
+      }, {
+        src: "./static/resource/man4.png"
+      }, {
+        src: "./static/resource/man5.png"
+      }, {
+        src: "./static/resource/woman3.png"
+      }, {
+        src: "./static/resource/woman4.png"
+      }, {
+        src: "./static/resource/woman5.png"
+      }, {
+        src: "./static/resource/qr.png"
+      }, {
+        src: "./static/resource/two-bg.png"
+      }, {
+        src: "./static/resource/two-text.png"
+      }, {
+        src: "./static/resource/stars-3.png"
+      }, {
+        src: "./static/resource/stars-4.png"
+      }, {
+        src: "./static/resource/stars-5.png"
+      }, {
+        src: "./static/resource/text-3.png"
+      }, {
+        src: "./static/resource/text-4.png"
+      }, {
+        src: "./static/resource/text-5.png"
+      }, {
+        src: "./static/resource/stars.mp3"
+      }, {
+        src: "./static/resource/dingdong.mp3"
+      }]); // 滑动提示
 
       document.addEventListener('WeixinJSBridgeReady', function () {
-        _this.data.isplay = true;
+        _this2.data.isplay = true;
         setTimeout(function () {
-          new Audio("./static/resource/bg.mp3").play();
+          owo.state.bgMusic = new Audio("./static/resource/bg.mp3");
+          owo.state.bgMusic.play();
+          owo.state.musicIsPlay = true;
         }, 0);
       });
     },
     "start": function start() {
-      owo.go('two', 'scaleDown', 'moveFromBottom', 'scaleDown', 'moveFromTop', null, true); // 播放音乐
+      if (!owo.state.isplay && this.data.loadComplete) {
+        owo.go('two', 'scaleDown', 'moveFromBottom', 'scaleDown', 'moveFromTop', null, true);
+        owo.state.isplay = true; // 播放音乐
 
-      if (!this.data.isplay) {
-        var audio = new Audio("./static/resource/bg.mp3");
-        audio.play();
+        if (!this.data.isplay) {
+          owo.state.bgMusic = new Audio("./static/resource/bg.mp3");
+          owo.state.bgMusic.play();
+          owo.state.musicIsPlay = true;
+        }
+      }
+    },
+    "bgMusic": function bgMusic() {
+      if (owo.state.bgMusic) {
+        if (owo.state.musicIsPlay) {
+          owo.state.bgMusic.pause();
+          owo.state.musicIsPlay = false;
+          this.query('.music-play')[0].src = 'http://cpc.people.com.cn/img/MAIN/2019/06/119357/images/music-muted.png';
+        } else {
+          owo.state.bgMusic.play();
+          owo.state.musicIsPlay = true;
+          this.query('.music-play')[0].src = 'http://cpc.people.com.cn/img/MAIN/2019/06/119357/images/music-active.png';
+        }
       }
     }
   },
   "two": {
     "data": {
       "scroller": null,
-      "scale": 1
+      "scale": 1,
+      "scaleX": 1,
+      "userMoveing": false,
+      "scrollNumber": null
     },
     "created": function created() {
-      var _this2 = this;
+      var _this3 = this;
 
+      if (!owo.state.isplay || owo.state.isShow) location.replace('');
       var twoBox = this.query('.box')[0];
       var content = $('.content')[0];
       var screen = owo.tool.getScreenInfo();
-      var scaleX = 1;
+      this.data.scaleX = 1;
       var translateZ = 0;
-      var translateScale = 0;
-      var proportion = 0;
+      this.data.translateScale = 0;
+      this.data.proportion = 0;
 
       if (screen.ratio > 1) {
         content.style.width = screen.clientWidth * 9 + 'px';
         content.style.height = screen.clientWidth / 1.6 + 'px';
-        scaleX = screen.clientWidth * 10 / 15985;
+        this.data.scaleX = screen.clientWidth * 10 / 15985;
         translateZ = (screen.clientWidth / 1.6 - screen.clientHeight) / 2;
-        translateScale = translateZ / screen.clientHeight;
-        proportion = screen.clientWidth / 1.6 / screen.clientHeight;
+        this.data.translateScale = translateZ / screen.clientHeight;
+        this.data.proportion = screen.clientWidth / 1.6 / screen.clientHeight;
         this.query('.content-item').forEach(function (element) {
           element.style.width = screen.clientWidth + 'px';
         });
       } else {
         content.style.width = screen.clientHeight * 9 + 'px';
         content.style.height = screen.clientHeight / 1.6 + 'px';
-        scaleX = screen.clientHeight * 10 / 15985;
+        this.data.scaleX = screen.clientHeight * 10 / 15985;
         translateZ = (screen.clientHeight / 1.6 - screen.clientWidth) / 2;
-        translateScale = translateZ / screen.clientWidth;
-        proportion = screen.clientHeight / 1.6 / screen.clientWidth;
+        this.data.translateScale = translateZ / screen.clientWidth;
+        this.data.proportion = screen.clientHeight / 1.6 / screen.clientWidth;
         this.query('.content-item').forEach(function (element) {
           element.style.width = screen.clientHeight + 'px';
         });
       }
 
-      var people = $('.two-1')[0];
+      var people = this.query('.two-1')[0];
       var peopleWidth = people.width;
+      this.$el.style.opacity = '1';
       setTimeout(function () {
         // console.log(isHorizontal)
-        _this2.data.scroller = new Scroller(function (left, top, zoom) {
-          var scrollNumber = isHorizontal ? top : left; // var X = -parseInt(myScroll.x / radio)
+        _this3.data.scroller = new Scroller(function (left, top, zoom) {
+          _this3.data.scrollNumber = isHorizontal ? top : left; // var X = -parseInt(myScroll.x / radio)
           // console.log(X)
 
-          var X = parseInt((scrollNumber + 40) / scaleX); // 使小人脚正好在线上
+          var X = parseInt((_this3.data.scrollNumber + 40) / _this3.data.scaleX); // 使小人脚正好在线上
           // console.log(proportion)
 
-          people.style.bottom = (pathPeople[X] - translateScale) * 100 * proportion + '%'; // people.style.left = scrollNumber + 'px'
+          people.style.bottom = (pathPeople[X] - _this3.data.translateScale) * 100 * _this3.data.proportion + '%'; // people.style.left = scrollNumber + 'px'
 
-          content.style.transform = "translate(-".concat(scrollNumber, "px, -").concat(translateZ, "px)");
+          content.style.transform = "translate3d(-".concat(_this3.data.scrollNumber, "px, -").concat(translateZ, "px, 0)");
         }, {
-          zooming: true,
-          bouncing: false
+          zooming: false,
+          bouncing: false,
+          animating: true
         }); // 默认只能翻2屏幕
 
-        _this2.setShowPageNumber(2);
-      }, 500);
+        _this3.setShowPageNumber(2);
+
+        _this3.$el.style.display = "block";
+      }, 100);
+      owo.tool.animate('bounceInDown', this.query('.info-text')[0], 500);
+      owo.tool.animate('flash', people, 500);
     },
     "setShowPageNumber": function setShowPageNumber(number) {
       var screenInfo = owo.tool.getScreenInfo();
@@ -133,7 +289,11 @@ owo.script = {
     "boxTouchstart": function boxTouchstart() {
       // console.log('开始')
       this.query('.hand')[0].style.display = 'none';
+      this.data.userMoveing = true;
       var e = this.$event;
+      setTimeout(function () {
+        $('.two-1')[0].style.left = '40px';
+      }, 100);
       this.data.scroller.doTouchStart(e.touches, e.timeStamp);
     },
     "boxTouchmove": function boxTouchmove() {
@@ -142,11 +302,12 @@ owo.script = {
     },
     "boxTouchend": function boxTouchend() {
       // console.log('结束')
+      this.data.userMoveing = true;
       var e = this.$event;
       this.data.scroller.doTouchEnd(e.timeStamp);
     },
     "activeScene": function activeScene() {
-      var _this3 = this;
+      var _this4 = this;
 
       var kacl = parseInt(this.$event.target.getAttribute('kacl'));
       if (owo.state.kacl == undefined) owo.state.kacl = 0;
@@ -180,18 +341,54 @@ owo.script = {
           var screen = owo.tool.getScreenInfo();
 
           if (screen.ratio > 1) {
-            _this3.data.scroller.scrollTo((activeLenght + 2) * screen.clientWidth, 0);
+            _this4.data.scroller.scrollTo((activeLenght + 2) * screen.clientWidth, 0, true);
           } else {
-            _this3.data.scroller.scrollTo(0, (activeLenght + 2) * screen.clientHeight);
+            _this4.data.scroller.scrollTo(0, (activeLenght + 2) * screen.clientHeight, true);
           }
         }, 1000);
       } else {
-        // 如果已经是最后了弹出ID输入框
-        setTimeout(function () {
-          _this3.query('.show-box')[0].style.top = '0';
-          owo.state.people = 'man';
-        }, 500);
+        var _screen = owo.tool.getScreenInfo();
+
+        if (_screen.ratio < 1) {
+          // 如果已经是最后了弹出ID输入框
+          setTimeout(function () {
+            _this4.query('.show-box')[0].style.top = '0';
+            owo.state.people = 'man';
+          }, 500);
+        } else {
+          owo.tool.toast('更多内容需要竖屏才能继续哦！');
+        }
+      } // 小人自发的往前走
+
+
+      var people = $('.two-1')[0];
+      var left = 40;
+      var screen = owo.tool.getScreenInfo();
+
+      var _this = this;
+
+      function run(num) {
+        // console.log(num)
+        left += 5;
+        var X = parseInt((_this.data.scrollNumber + left) / _this.data.scaleX);
+        people.style.left = left + 'px';
+        people.style.bottom = (pathPeople[X] - _this.data.translateScale) * 100 * _this.data.proportion + '%';
+
+        if (left < num && !_this.data.userMoveing) {
+          setTimeout(function () {
+            run(num);
+          }, 20);
+        }
       }
+
+      this.data.userMoveing = false;
+      setTimeout(function () {
+        if (screen.ratio > 1) {
+          run(screen.clientWidth / 2);
+        } else {
+          run(screen.clientHeight / 2);
+        }
+      }, 2000);
     },
     "next": function next() {
       var ID = this.query('.idInput')[0].value;
@@ -212,19 +409,57 @@ owo.script = {
       this.query('.man')[0].src = "./static/resource/man.png";
       this.query('.woman')[0].src = "./static/resource/woman-active.png";
       owo.state.people = 'woman';
+    },
+    "bgMusic": function bgMusic() {
+      if (owo.state.bgMusic) {
+        if (owo.state.musicIsPlay) {
+          owo.state.bgMusic.pause();
+          owo.state.musicIsPlay = false;
+          this.query('.music-play')[0].src = 'http://cpc.people.com.cn/img/MAIN/2019/06/119357/images/music-muted.png';
+        } else {
+          owo.state.bgMusic.play();
+          owo.state.musicIsPlay = true;
+          this.query('.music-play')[0].src = 'http://cpc.people.com.cn/img/MAIN/2019/06/119357/images/music-active.png';
+        }
+      }
+    },
+    "inputEnd": function inputEnd() {
+      console.log('sd');
+      $(window).scrollTop(0);
     }
   },
   "share": {
     "created": function created() {
-      var _this4 = this;
-      var screenInfo = owo.tool.getScreenInfo();
+      var _this5 = this;
+
+      // owo.tool.animate('bounceIn', this.query('.erCode')[0], 1000)
+      // owo.tool.animate('fadeIn', this.query('.text')[0], 1000)
+      // owo.tool.animate('bounceInUp', this.query('.button')[0], 2500)
+      var screen = owo.tool.getScreenInfo();
       if (!owo.state.kacl) location.replace('');
+      owo.state.isShow = true; // owo.state.people = 'man'
+
       var start = 5;
       if (owo.state.kacl > 800) start = 4;
       if (owo.state.kacl > 1600) start = 3;
       var bgURL = './static/resource/code-' + start + '.png';
-      this.query('.card')[0].style.backgroundImage = "url(" + './static/resource/' + owo.state.people + start + '.png)';
-      this.query('.card')[0].style.height = screenInfo.clientWidth * 0.8 * 1.789 + 'px'
+      this.query('.stars')[0].style.backgroundImage = 'url("./static/resource/stars-' + start + '.png")';
+      this.query('.title')[0].style.backgroundImage = 'url("./static/resource/text-' + start + '.png")'; // 动画
+
+      setTimeout(function () {
+        new Audio("./static/resource/stars.mp3").play();
+      }, 800);
+      owo.tool.animate('zoomInDown', this.query('.title')[0], 800);
+      setTimeout(function () {
+        new Audio("./static/resource/dingdong.mp3").play();
+      }, 1200);
+      owo.tool.animate('rubberBand', this.query('.stars')[0], 1500); // 播放进场声音
+
+      this.query('.card')[0].style.backgroundImage = 'url("./static/resource/' + owo.state.people + start + '.png")';
+      this.query('.card')[0].style.height = 1.71 * screen.clientWidth * 0.8 * 4 + 'px';
+      this.query('.erCode')[0].style.height = screen.clientWidth * 0.15 * 4 + 'px'; // console.log(this.query('.erCode')[0].offsetWidth)
+      // console.log('url("./static/resource/' + owo.state.people + start + '.png")')
+
       this.query('.text')[0].innerText = '@' + owo.state.ID;
       document.body.classList.remove('horizontal');
       document.body.style.width = '100%';
@@ -232,19 +467,39 @@ owo.script = {
       document.body.style.left = 'unset';
       document.body.style.top = 'unset';
       document.body.style.position = 'relative';
-      this.$el.style.backgroundImage = "url(\"".concat(bgURL, "\")");
+      this.$el.style.backgroundImage = "url(\"".concat(bgURL, "\")"); // 画图
+      // const canv = this.query('canvas')[0]
+      // canv.width = screen.clientWidth * 4
+      // canv.height = screen.clientHeight * 4
+      // const ctx = canv.getContext("2d")
+      // const bgImg = new Image()
+      // bgImg.src = './static/resource/code-' + start + '.png'
+      // bgImg.onload = () => {
+      //   //以Canvas画布上的坐标(10,10)为起始点，绘制图像
+      //   ctx.drawImage(bgImg, 0, 0, canv.width, canv.height)
+      //   const cardWidth = canv.width * 0.8
+      //   const cardHeight = cardWidth * 1.78
+      //   // console.log(cardHeight / 4)
+      //   this.query('.card')
+      //   ctx.drawImage(this.query('.card')[0], screen.clientWidth * 0.1 * 4, (screen.clientHeight - cardHeight / 4) * 2, cardWidth, cardHeight)
+      //   // 二维码
+      //   const qrCodeWidth = canv.width * 0.15
+      //   ctx.drawImage(this.query('.erCode')[0], screen.clientWidth * 0.3 * 4, screen.clientWidth * 1.27 * 4, qrCodeWidth, qrCodeWidth)
+      //   ctx.font="60px Georgia";
+      //   ctx.fillText("Hello World!", screen.clientWidth * 0.15 * 4, screen.clientWidth * 0.26 * 4)
+      // }
+
       setTimeout(function () {
-        html2canvas(_this4.$el, {
-          useCORS: true,
-          logging: false,
-        }).then((canvas) => {
+        html2canvas(_this5.$el, {
+          useCORS: true
+        }).then(function (canvas) {
           // console.log(canvas.toDataURL("image/png"))
-          var image = _this4.query('.show')[0];
-          image.src = canvas.toDataURL("image/jpeg", 1);
-          image.style.display = 'block';
-          _this4.query('.button')[0].style.display = 'block';
-        })
-      }, 1000);
+          var image = _this5.query('.show')[0];
+
+          image.src = canvas.toDataURL("image/png"); // this.query('.button')[0].style.opacity = 1
+          // log(image.src.length)
+        });
+      }, 2000);
     },
     "replay": function replay() {
       location.replace('');
@@ -425,7 +680,7 @@ _owo.showPage = function() {
   参数2: 离开页面动画
   参数3: 进入页面动画
 */
-owo.go = function (pageName, inAnimation, outAnimation, backInAnimation, backOutAnimation, param) {
+owo.go = function (pageName, inAnimation, outAnimation, backInAnimation, backOutAnimation, param, noBack) {
   // console.log(owo.script[pageName])
   owo.script[pageName]._animation = {
     "in": inAnimation,
@@ -450,7 +705,11 @@ owo.go = function (pageName, inAnimation, outAnimation, backInAnimation, backOut
       "forward": false
     }
   }
-  location.replace(paramString + "#" + pageName)
+  if (noBack) {
+    location.replace(paramString + "#" + pageName)
+  } else {
+    window.location.href = paramString + "#" + pageName
+  }
 }
 
 // url发生改变事件
@@ -687,6 +946,34 @@ owo.tool.getScreenInfo = () => {
     // 缩放比例
     devicePixelRatio: window.devicePixelRatio || 1
   }
+}/**
+ * 显示toast提示 不支持ie8
+ * @param  {number} text       显示的文字
+ * @param  {number} time       显示时长
+ */
+
+owo.tool.toast = (text, time) => {
+  if (window.owo.state.toastClock) {
+    clearTimeout(window.owo.state.toastClock)
+    hideToast()
+  }
+  if (time === undefined || time === null) {
+    // 默认2秒
+    time = 2000
+  }
+  const toast = document.createElement("div")
+  toast.setAttribute("id", "toast")
+  toast.setAttribute("class", "toast")
+  // 设置样式
+  toast.style.cssText = "position:fixed;z-index:999;background-color:rgba(0, 0, 0, 0.5);bottom:10%;line-height:40px;border-radius:10px;left:0;right:0;margin:0 auto;text-align:center;color:white;max-width:200px;padding:0 10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"
+
+  toast.innerHTML = text
+  document.body.appendChild(toast)
+  function hideToast() {
+    document.getElementById('toast').outerHTML = ''
+    window.owo.state.toastClock = null
+  }
+  window.owo.state.toastClock = setTimeout(hideToast, time)
 }
 
 /* 运行页面所属的方法 */

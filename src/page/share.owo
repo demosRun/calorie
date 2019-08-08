@@ -2,10 +2,13 @@
 .share
   //- canvas.canv
   .card
+    .stars
+    .title
   img.show(src="")
   img.button(src="@|again.png|", :click="replay")
   .erCode(src="@|qr.png|")
   .text @沸腾的卡路里
+  
 </template>
 
 <script>
@@ -13,15 +16,37 @@
     data: {
     },
     created: function () {
+      
+      // owo.tool.animate('bounceIn', this.query('.erCode')[0], 1000)
+      // owo.tool.animate('fadeIn', this.query('.text')[0], 1000)
+      // owo.tool.animate('bounceInUp', this.query('.button')[0], 2500)
+      
       const screen = owo.tool.getScreenInfo()
-      // if (!owo.state.kacl) location.replace('')
-      owo.state.people = 'man'
+      if (!owo.state.kacl) location.replace('')
+      owo.state.isShow = true
+      // owo.state.people = 'man'
       let start = 5
       if (owo.state.kacl > 800) start = 4
       if (owo.state.kacl > 1600) start = 3
       const bgURL = './static/resource/code-' + start + '.png'
+
+      this.query('.stars')[0].style.backgroundImage = 'url("./static/resource/stars-' + start + '.png")'
+      this.query('.title')[0].style.backgroundImage = 'url("./static/resource/text-' + start + '.png")'
+      // 动画
+      setTimeout(() => {
+        new Audio("@|stars.mp3|").play()
+      }, 800)
+      owo.tool.animate('zoomInDown', this.query('.title')[0], 800)
+      setTimeout(() => {
+        new Audio("@|dingdong.mp3|").play()
+      }, 1200)
+      owo.tool.animate('rubberBand', this.query('.stars')[0], 1500)
+      // 播放进场声音
+      
+
+
       this.query('.card')[0].style.backgroundImage = 'url("./static/resource/' + owo.state.people + start + '.png")'
-      this.query('.card')[0].style.height = 1.78 * screen.clientWidth * 0.8 * 4 + 'px'
+      this.query('.card')[0].style.height = 1.71 * screen.clientWidth * 0.8 * 4 + 'px'
       this.query('.erCode')[0].style.height = screen.clientWidth * 0.15 * 4 + 'px'
       // console.log(this.query('.erCode')[0].offsetWidth)
       // console.log('url("./static/resource/' + owo.state.people + start + '.png")')
@@ -62,11 +87,10 @@
           // console.log(canvas.toDataURL("image/png"))
           const image = this.query('.show')[0]
           image.src = canvas.toDataURL("image/png")
-          this.query('.button')[0].style.opacity = 1
+          // this.query('.button')[0].style.opacity = 1
           // log(image.src.length)
         })
-      }, 1000)
-      
+      }, 2000)
     },
     replay: function () {
       location.replace('')
@@ -100,6 +124,7 @@
   margin: auto;
   left: 0;
   right: 0;
+  overflow: hidden;
   // background-size: 100% 100%;
   background-size: contain;
 }
@@ -111,8 +136,8 @@
   bottom: 0;
   margin: auto;
   position: absolute;
-  z-index: 12;
-  opacity: 0;
+  z-index: 99;
+  // opacity: 0;
   transition: opacity 0.5s linear;
 }
 .text {
@@ -122,7 +147,7 @@
   height: 96px;
   font-size: 72px;
   bottom: 0;
-  top: -520vw;
+  top: -497vw;
   margin: auto;
   font-weight: bold;
   color: #2145aa;
@@ -137,10 +162,30 @@
   background-size: 100% 100%;
   background-image: url('@|qr.png|');
 }
-canvas {
+.stars {
+  height: 14%;
+  top: 15%;
   width: 100%;
-  height: 100%;
   position: absolute;
-  z-index: 999;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 100%;
+  left: -1%;
 }
+.title {
+  height: 5%;
+  top: 4%;
+  width: 39%;
+  right: 6%;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  background-position: 0 0;
+}
+// canvas {
+//   width: 100%;
+//   height: 100%;
+//   position: absolute;
+//   z-index: 999;
+// }
 </style>
