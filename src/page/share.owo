@@ -5,7 +5,7 @@
     .stars
     .title
   img.show(src="")
-  img.button(src="@|again.png|", :click="replay")
+  img.button(src="@|again.png|", :touchstart="replay")
   .erCode(src="@|qr.png|")
   .text @沸腾的卡路里
   
